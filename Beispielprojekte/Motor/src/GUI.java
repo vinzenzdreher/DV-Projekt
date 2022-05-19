@@ -70,9 +70,9 @@ public class GUI{
 		//Bild einfügen
 		ImageIcon bild = new ImageIcon("Aufgabe.jpg");
 		JLabel bild1=new JLabel(bild);
-		bild1.setBounds(350, 30, 300, 200);		
-		
-		
+		bild1.setBounds(350, 30, 300, 200);	
+	
+	
 		//Ein- und Ausgabefenster (Frame) wird erstellt mit Voreinstellungen
 		
 		JFrame jr=new JFrame("Motorenberechnung");
