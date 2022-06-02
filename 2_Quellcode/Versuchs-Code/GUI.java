@@ -20,9 +20,9 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 import javax.swing.SwingConstants;
 
-public class Test {
+public class GUI {
 	
-	public Test () {
+	public GUI () {
 		
 		String[] werkstoff = {"bitte wählen!","Automatenstahl","Messing", "Aluminium","Einsatzstahl","Vergütungsstahl","Werkzeugstahl"};
 		String [] bearbeitung = {"Längsrundschruppen","Längsrundschlichten","Plandrehen"};
@@ -223,7 +223,7 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		new Test();
+		new GUI();
 
 	}
 
