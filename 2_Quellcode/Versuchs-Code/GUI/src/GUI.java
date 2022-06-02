@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
 
@@ -20,15 +21,15 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 import javax.swing.SwingConstants;
 
-public class Test {
+public class GUI {
 	
-	public Test () {
+	public GUI () {
 		
-		String[] werkstoff = {"bitte wählen!","Automatenstahl","Messing", "Aluminium","Einsatzstahl","Vergütungsstahl","Werkzeugstahl"};
+		String [] werkstoff = {"Automatenstahl","Messing", "Aluminium","Einsatzstahl","Vergütungsstahl","Werkzeugstahl"};
 		String [] bearbeitung = {"Längsrundschruppen","Längsrundschlichten","Plandrehen"};
-		String [] oberfläche = {"0.4", "1", "2.5", "6.3", "16", "40", "100"};
+		String [] oberflaeche = {"0.4", "1", "2.5", "6.3", "16", "40", "100"};
 		String [] radius ={"0.1", "0.2", "0.4", "0.8", "1.0", "2.0", "4.0"};
-		String variableNorm = null;
+		String variableModel = null;
 		String variableHer = null;
 		String variableAnw  = null; 
 		String variableVc = null;
@@ -46,10 +47,12 @@ public class Test {
 		frame.setSize(1000,700);
 		frame.setLayout(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Werkstattdolori3000");
+		frame.setTitle("CuttingPlateFinder");
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setBackground(new Color(0xC0C0C0));
+		/*Image icon = new Image("Icon.jpg", true);
+		frame.setIconImage(icon);*/
 		Container cp = frame.getContentPane();
 		cp.setLayout(null);
 		
@@ -75,11 +78,11 @@ public class Test {
 		lbRadius.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
 		cp.add(lbRadius);
 		
-		JLabel lbOberfläche = new JLabel("Öberflächengüte [Rz in µm]");
-		lbOberfläche.setBounds(520, 100, 200, 25);
-		lbOberfläche.setHorizontalAlignment(SwingConstants.CENTER);
-		lbOberfläche.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
-		cp.add(lbOberfläche);
+		JLabel lbOberflaeche = new JLabel("Öberflächengüte [Rz in µm]");
+		lbOberflaeche.setBounds(520, 100, 200, 25);
+		lbOberflaeche.setHorizontalAlignment(SwingConstants.CENTER);
+		lbOberflaeche.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
+		cp.add(lbOberflaeche);
 		
 		JLabel lbBearbeitung = new JLabel("Bearbeitung");
 		lbBearbeitung.setBounds(760, 100, 200, 25);
@@ -108,8 +111,8 @@ public class Test {
 		/*********************************************************/
 		
 		JSpinner spOberflaeche = new JSpinner();
-		SpinnerListModel spOberflächeModel = new SpinnerListModel (oberfläche);
-		spOberflaeche.setModel(spOberflächeModel);
+		SpinnerListModel spOberflaecheModel = new SpinnerListModel (oberflaeche);
+		spOberflaeche.setModel(spOberflaecheModel);
 		spOberflaeche.setBounds(520, 150, 200, 30);
 	    spOberflaeche.setEnabled(true);
 	    spOberflaeche.setEditor(new JSpinner.DefaultEditor(spOberflaeche));
@@ -120,7 +123,7 @@ public class Test {
 		JSpinner spRadius = new JSpinner();
 		SpinnerListModel spRadiusModel = new SpinnerListModel (radius);
 		spRadius.setModel(spRadiusModel);
-		spRadius.setBounds(520, 150, 200, 30);
+		spRadius.setBounds(280, 150, 200, 30);
 		spRadius.setEnabled(true);
 		spRadius.setEditor(new JSpinner.DefaultEditor(spRadius));
 		spRadius.setFont(new Font("@HP Simplified Hans", Font.BOLD, 16));
@@ -150,7 +153,7 @@ public class Test {
 		JList liVorschlag1 = new JList();
 		DefaultListModel liVorschlag1Model = new DefaultListModel();
 		liVorschlag1.setModel(liVorschlag1Model);
-		liVorschlag1Model.addElement("Norm: "+variableNorm);
+		liVorschlag1Model.addElement("Norm: "+variableModel);
 	    liVorschlag1Model.addElement("Hersteller: "+variableHer);
 	    liVorschlag1Model.addElement("Anwendung: "+variableAnw);
 	    liVorschlag1Model.addElement("Radius: "+variableRad+" mm");
@@ -163,7 +166,7 @@ public class Test {
 		JList liVorschlag2 = new JList();
 		DefaultListModel liVorschlag2Model = new DefaultListModel();
 		liVorschlag2.setModel(liVorschlag2Model);
-		liVorschlag2Model.addElement("Norm: "+variableNorm);
+		liVorschlag2Model.addElement("Norm: "+variableModel);
 	    liVorschlag2Model.addElement("Hersteller: "+variableHer);
 	    liVorschlag2Model.addElement("Anwendung: "+variableAnw);
 	    liVorschlag2Model.addElement("Radius: "+variableRad+" mm");
@@ -175,7 +178,7 @@ public class Test {
 		JList liVorschlag3 = new JList();
 		DefaultListModel liVorschlag3Model = new DefaultListModel();
 		liVorschlag3.setModel(liVorschlag3Model);
-		liVorschlag3Model.addElement("Norm: "+variableNorm);
+		liVorschlag3Model.addElement("Norm: "+variableModel);
 	    liVorschlag3Model.addElement("Hersteller: "+variableHer);
 	    liVorschlag3Model.addElement("Anwendung: "+variableAnw);
 	    liVorschlag3Model.addElement("Radius: "+variableRad+" mm");
@@ -223,7 +226,7 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		new Test();
+		new GUI();
 
 	}
 
