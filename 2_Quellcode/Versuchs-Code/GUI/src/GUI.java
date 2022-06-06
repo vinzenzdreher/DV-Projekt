@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -21,21 +23,23 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 import javax.swing.SwingConstants;
 
+import java.util.*;
+
 public class GUI {
 	
 	public GUI () {
 		
 		String [] werkstoff = {"Automatenstahl","Messing", "Aluminium","Einsatzstahl","Vergütungsstahl","Werkzeugstahl"};
 		String [] bearbeitung = {"Längsrundschruppen","Längsrundschlichten","Plandrehen"};
-		String [] oberflaeche = {"0.4", "1", "2.5", "6.3", "16", "40", "100"};
+		String [] oberfläche = {"1", "1.6", "2.5", "4", "6.3", "10", "16", "25", "40", "63"};
 		String [] radius ={"0.1", "0.2", "0.4", "0.8", "1.0", "2.0", "4.0"};
-		String variableModel = null;
-		String variableHer = null;
-		String variableAnw  = null; 
-		String variableVc = null;
-		String variableF = null;
-		String variableAp = null;
-		String variableRad = null;
+		String variableModel = "keine Eingabe";
+		String variableHer = "keine Eingabe";
+		String variableAnw  = "keine Eingabe"; 
+		String variableVc = "keine Eingabe";
+		String variableF = "keine Eingabe";
+		String variableAp = "keine Eingabe";
+		String variableRad = "keine Eingabe";
 		
 		JFrame frame = new JFrame("Werkzeugauswahl");
 
@@ -51,8 +55,8 @@ public class GUI {
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setBackground(new Color(0xC0C0C0));
-		/*Image icon = new Image("Icon.jpg", true);
-		frame.setIconImage(icon);*/
+															/*Image icon = Toolkit.getDefaultToolkit().getImage("");
+															frame.setIconImage(icon);*/
 		Container cp = frame.getContentPane();
 		cp.setLayout(null);
 		
@@ -60,7 +64,8 @@ public class GUI {
 
 		JButton bSuchen = new JButton("Suche starten!");
 		bSuchen.setBounds(350, 285, 300, 70);
-		bSuchen.setMargin(new Insets(2, 2, 2, 2));
+		//bSuchen.setMargin(new Insets(2, 2, 2, 2));
+		bSuchen.setFont(new Font("@HP Simplified Hans",Font.BOLD, 16));
 		bSuchen.setBackground(new Color(0xFFC800));
 		cp.add(bSuchen);
 		
@@ -78,11 +83,11 @@ public class GUI {
 		lbRadius.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
 		cp.add(lbRadius);
 		
-		JLabel lbOberflaeche = new JLabel("Öberflächengüte [Rz in µm]");
-		lbOberflaeche.setBounds(520, 100, 200, 25);
-		lbOberflaeche.setHorizontalAlignment(SwingConstants.CENTER);
-		lbOberflaeche.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
-		cp.add(lbOberflaeche);
+		JLabel lbOberfläche = new JLabel("Öberflächengüte [Rz in µm]");
+		lbOberfläche.setBounds(520, 100, 200, 25);
+		lbOberfläche.setHorizontalAlignment(SwingConstants.CENTER);
+		lbOberfläche.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
+		cp.add(lbOberfläche);
 		
 		JLabel lbBearbeitung = new JLabel("Bearbeitung");
 		lbBearbeitung.setBounds(760, 100, 200, 25);
@@ -111,8 +116,8 @@ public class GUI {
 		/*********************************************************/
 		
 		JSpinner spOberflaeche = new JSpinner();
-		SpinnerListModel spOberflaecheModel = new SpinnerListModel (oberflaeche);
-		spOberflaeche.setModel(spOberflaecheModel);
+		SpinnerListModel spOberflächeModel = new SpinnerListModel (oberfläche);
+		spOberflaeche.setModel(spOberflächeModel);
 		spOberflaeche.setBounds(520, 150, 200, 30);
 	    spOberflaeche.setEnabled(true);
 	    spOberflaeche.setEditor(new JSpinner.DefaultEditor(spOberflaeche));
@@ -218,15 +223,35 @@ public class GUI {
 		mb.add(datei);
 		mb.add(hilfe);
 		mb.setVisible(true);
-		cp.add(mb); }
+		cp.add(mb); 
 		
 		/*********************************************************/
+	
+		bSuchen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			String eingabeWerkstoff = (String)cbWerkstoff.getSelectedItem();
+			String eingabeBearbeitung = (String)cbBearbeitung.getSelectedItem();
+			double eingabeRadius = Double.parseDouble((String)spRadius.getValue());
+			double eingabeOberflaeche = Double.parseDouble((String)spOberflaeche.getValue())/1000;
+			double vorschub = Math.round(Math.sqrt(8*eingabeOberflaeche*eingabeRadius)*1000.0)/1000.0;
+			System.out.println(vorschub+" mm/U");
+			System.out.println(eingabeWerkstoff);
+			System.out.println(eingabeBearbeitung);
+			
+			
 
+			//data.getSchneidplatte(,,)
+			
+			frame.repaint();
+			}
+			});
+		}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		//datenbank data = new datenbank();
 		new GUI();
+		
 
 	}
 
