@@ -39,7 +39,9 @@ public class datenbank {
 								for(int i=1; i<=cols; i++) {
 									System.out.print(rs.getString(i)+ "\t");
 									}
-								System.out.println();					//Ausgabe
+								System.out.println();
+								
+													//Ausgabe
 							}
 							rs.close();					//ResultSet Schließen
 									}
@@ -49,10 +51,10 @@ public class datenbank {
 										}
 	}
 
-public static void main(String[] args) {
+//public static void main(String[] args) {
 
-	datenbank one= new datenbank(); // TEST
+	//datenbank one= new datenbank(); // TEST
 	
-	one.getSchneidplatte();
+	//one.getSchneidplatte();
 }
-}
+
