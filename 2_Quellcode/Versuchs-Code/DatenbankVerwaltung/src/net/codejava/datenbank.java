@@ -1,10 +1,12 @@
 package net.codejava;
-import java.sql.*;
-import java.util.*;
-import java.lang.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
 
 
-public class datenbank {
+public class datenbank{
 	private String databaseURL;
 	private String material;
 	private String beaumfang;
@@ -12,12 +14,9 @@ public class datenbank {
 	private int a; 
 	private String radius;
  	
-	datenbank(){
+	datenbank(String material, String beaumfang, String radius){
 		databaseURL = "jdbc:ucanaccess://Database1.accdb"; 
 		//für TEST
-		material = "Stahl";
-		beaumfang = "Schlichten";
-		radius = "0.4";
 		
 	}
 	public void getSchneidplatte() {
@@ -36,9 +35,18 @@ public class datenbank {
 							ResultSetMetaData rsmd = rs.getMetaData();		
 							int cols = rsmd.getColumnCount();		//bestimmen der größe der Tabelle 
 							while(rs.next()) {
-								for(int i=1; i<=cols; i++) {
-									System.out.print(rs.getString(i)+ "\t");
-									}
+								variableID = rs.getString(1);
+								variableHer = rs.getString(2);
+								variableModel = rs.getString(3);
+								variableMat = rs.getString(5); 
+								variableBear = rs.getString(8);
+								variableRad = rs.getString(9);
+								variableVc = rs.getString(4);
+								variableF = rs.getString(6);
+								variableAp = rs.getString(7);
+								
+								
+								
 								System.out.println();
 								
 													//Ausgabe
@@ -51,10 +59,10 @@ public class datenbank {
 										}
 	}
 
-//public static void main(String[] args) {
+public static void main(String[] args) {
 
 	//datenbank one= new datenbank(); // TEST
 	
 	//one.getSchneidplatte();
 }
-
+}

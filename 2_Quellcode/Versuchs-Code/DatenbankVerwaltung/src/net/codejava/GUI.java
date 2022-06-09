@@ -3,8 +3,6 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Image;
-import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,9 +22,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 import javax.swing.SwingConstants;
 
-import java.util.*;
-
-public class GUI {
+public class GUI{
 	
 	public GUI () {
 		
@@ -34,13 +30,15 @@ public class GUI {
 		String [] bearbeitung = {"Längsrundschruppen","Längsrundschlichten","Plandrehen"};
 		String [] oberfläche = {"1", "1.6", "2.5", "4", "6.3", "10", "16", "25", "40", "63"};
 		String [] radius ={"0.1", "0.2", "0.4", "0.8", "1.0", "2.0", "4.0"};
-		String variableModel = "keine Eingabe";
+		String variableID = "keine Eingabe";
 		String variableHer = "keine Eingabe";
-		String variableAnw  = "keine Eingabe"; 
+		String variableModel = "keine Eingabe";
+		String variableMat  = "keine Eingabe"; 
+		String variableBear = "keine Eingabe";
+		String variableRad = "keine Eingabe";
 		String variableVc = "keine Eingabe";
 		String variableF = "keine Eingabe";
 		String variableAp = "keine Eingabe";
-		String variableRad = "keine Eingabe";
 		
 		JFrame frame = new JFrame("Werkzeugauswahl");
 
@@ -159,9 +157,11 @@ public class GUI {
 		JList liVorschlag1 = new JList();
 		DefaultListModel liVorschlag1Model = new DefaultListModel();
 		liVorschlag1.setModel(liVorschlag1Model);
-		liVorschlag1Model.addElement("Norm: "+variableModel);
-	    liVorschlag1Model.addElement("Hersteller: "+variableHer);
-	    liVorschlag1Model.addElement("Anwendung: "+variableAnw);
+		liVorschlag1Model.addElement("ID: "+variableID);
+		liVorschlag1Model.addElement("Hersteller: "+variableHer);
+		liVorschlag1Model.addElement("Modell-Nr.: "+variableModel);
+		liVorschlag1Model.addElement("Werkstoff: "+variableMat);
+	    liVorschlag1Model.addElement("Bearbeitung: "+variableBear);
 	    liVorschlag1Model.addElement("Radius: "+variableRad+" mm");
 	    liVorschlag1Model.addElement("Schnittgeschw.: "+variableVc+" m/min");
 	    liVorschlag1Model.addElement("Vorschub: "+variableF+" mm/U");
@@ -172,9 +172,11 @@ public class GUI {
 		JList liVorschlag2 = new JList();
 		DefaultListModel liVorschlag2Model = new DefaultListModel();
 		liVorschlag2.setModel(liVorschlag2Model);
-		liVorschlag2Model.addElement("Norm: "+variableModel);
-	    liVorschlag2Model.addElement("Hersteller: "+variableHer);
-	    liVorschlag2Model.addElement("Anwendung: "+variableAnw);
+		liVorschlag2Model.addElement("ID: "+variableID);
+		liVorschlag2Model.addElement("Hersteller: "+variableHer);
+		liVorschlag2Model.addElement("Modell-Nr.: "+variableModel);
+		liVorschlag2Model.addElement("Werkstoff: "+variableMat);
+	    liVorschlag2Model.addElement("Bearbeitung: "+variableBear);
 	    liVorschlag2Model.addElement("Radius: "+variableRad+" mm");
 	    liVorschlag2Model.addElement("Schnittgeschw.: "+variableVc+" m/min");
 	    liVorschlag2Model.addElement("Vorschub: "+variableF+" mm/U");
@@ -183,10 +185,11 @@ public class GUI {
 		
 		JList liVorschlag3 = new JList();
 		DefaultListModel liVorschlag3Model = new DefaultListModel();
-		liVorschlag3.setModel(liVorschlag3Model);
-		liVorschlag3Model.addElement("Norm: "+variableModel);
-	    liVorschlag3Model.addElement("Hersteller: "+variableHer);
-	    liVorschlag3Model.addElement("Anwendung: "+variableAnw);
+		liVorschlag3Model.addElement("ID: "+variableID);
+		liVorschlag3Model.addElement("Hersteller: "+variableHer);
+		liVorschlag3Model.addElement("Modell-Nr.: "+variableModel);
+		liVorschlag3Model.addElement("Werkstoff: "+variableMat);
+	    liVorschlag3Model.addElement("Bearbeitung: "+variableBear);
 	    liVorschlag3Model.addElement("Radius: "+variableRad+" mm");
 	    liVorschlag3Model.addElement("Schnittgeschw.: "+variableVc+" m/min");
 	    liVorschlag3Model.addElement("Vorschub: "+variableF+" mm/U");
@@ -211,7 +214,7 @@ public class GUI {
 		
 		/*********************************************************/
 		
-		JMenuBar mb = new JMenuBar();
+	/*	JMenuBar mb = new JMenuBar();
 
 		JMenu datei = new JMenu("Datei");
 		JMenu hilfe = new JMenu("Hilfe");
@@ -224,7 +227,7 @@ public class GUI {
 		mb.add(datei);
 		mb.add(hilfe);
 		mb.setVisible(true);
-		cp.add(mb); 
+		cp.add(mb); */
 		
 		/*********************************************************/
 	
@@ -232,16 +235,13 @@ public class GUI {
 			public void actionPerformed(ActionEvent e) {
 			String eingabeWerkstoff = (String)cbWerkstoff.getSelectedItem();
 			String eingabeBearbeitung = (String)cbBearbeitung.getSelectedItem();
-			double eingabeRadius = Double.parseDouble((String)spRadius.getValue());
+			String eingabeRadius = (String)spRadius.getValue();
 			double eingabeOberflaeche = Double.parseDouble((String)spOberflaeche.getValue())/1000;
-			double vorschub = Math.round(Math.sqrt(8*eingabeOberflaeche*eingabeRadius)*1000.0)/1000.0;
-			System.out.println(vorschub+" mm/U");
-			System.out.println(eingabeWerkstoff);
-			System.out.println(eingabeBearbeitung);
+			double vorschub = Math.round(Math.sqrt(8*eingabeOberflaeche*Double.parseDouble(eingabeRadius))*1000.0)/1000.0;
 			
-			
-
-			//data.getSchneidplatte(,,)
+			datenbank data = new datenbank(eingabeWerkstoff, eingabeBearbeitung, eingabeRadius);
+			data.getSchneidplatte();
+		
 			
 			frame.repaint();
 			}
