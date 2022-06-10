@@ -241,6 +241,14 @@ public class GUI{
 			
 			datenbank data = new datenbank(eingabeWerkstoff, eingabeBearbeitung, eingabeRadius);
 			data.getSchneidplatte();
+					
+			variableID = data.iD;
+			variableModel = data.model;
+			variableMat  = data.mat; 
+			variableBear = data.bear;
+			variableVc = data.vc;
+			variableF = data.f;
+			variableAp = data.ap;
 		
 			
 			frame.repaint();
