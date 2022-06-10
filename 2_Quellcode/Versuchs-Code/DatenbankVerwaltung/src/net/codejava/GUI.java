@@ -39,6 +39,7 @@ public class GUI{
 		String variableVc = "keine Eingabe";
 		String variableF = "keine Eingabe";
 		String variableAp = "keine Eingabe";
+		String [] ergebnis = {"ID: "+variableID, "Hersteller: "+variableHer, "Modell-Nr.: "+variableModel, "Werkstoff: "+variableMat, "Bearbeitung: "+variableBear, "Radius: "+variableRad+" mm", "Schnittgeschwindigkeit: "+variableVc+" m/min", "Vorschub: "+variableF+" mm/U", "Zustellung: "+variableAp+" mm"};
 		
 		JFrame frame = new JFrame("Werkzeugauswahl");
 
@@ -95,19 +96,19 @@ public class GUI{
 		cp.add(lbBearbeitung);
 		
 		JLabel lbVorschlag1 = new JLabel("Vorschlag 1");
-		lbVorschlag1.setBounds(70, 460, 250, 22);
+		lbVorschlag1.setBounds(70, 410, 250, 22);
 		lbVorschlag1.setHorizontalAlignment(SwingConstants.CENTER);
 		lbVorschlag1.setFont(new Font("@HP Simplified Hans", Font.BOLD, 16));
 		cp.add(lbVorschlag1);
 		
 		JLabel lbVorschlag2 = new JLabel("Vorschlag 2");
-		lbVorschlag2.setBounds(370, 460, 250, 22);
+		lbVorschlag2.setBounds(370, 410, 250, 22);
 		lbVorschlag2.setHorizontalAlignment(SwingConstants.CENTER);
 		lbVorschlag2.setFont(new Font("@HP Simplified Hans", Font.BOLD, 16));
 		cp.add(lbVorschlag2);
 		
 		JLabel lbVorschlag3 = new JLabel("Vorschlag 3");
-		lbVorschlag3.setBounds(670, 460, 250, 22);
+		lbVorschlag3.setBounds(670, 410, 250, 22);
 		lbVorschlag3.setHorizontalAlignment(SwingConstants.CENTER);
 		lbVorschlag3.setFont(new Font("@HP Simplified Hans", Font.BOLD, 16));
 		cp.add(lbVorschlag3);
@@ -154,61 +155,24 @@ public class GUI{
 		
 		/*********************************************************/
 		
-		JList liVorschlag1 = new JList();
-		DefaultListModel liVorschlag1Model = new DefaultListModel();
-		liVorschlag1.setModel(liVorschlag1Model);
-		liVorschlag1Model.addElement("ID: "+variableID);
-		liVorschlag1Model.addElement("Hersteller: "+variableHer);
-		liVorschlag1Model.addElement("Modell-Nr.: "+variableModel);
-		liVorschlag1Model.addElement("Werkstoff: "+variableMat);
-	    liVorschlag1Model.addElement("Bearbeitung: "+variableBear);
-	    liVorschlag1Model.addElement("Radius: "+variableRad+" mm");
-	    liVorschlag1Model.addElement("Schnittgeschw.: "+variableVc+" m/min");
-	    liVorschlag1Model.addElement("Vorschub: "+variableF+" mm/U");
-	    liVorschlag1Model.addElement("Zustellung: "+variableAp+" mm");
-	    
-		
-		
-		JList liVorschlag2 = new JList();
-		DefaultListModel liVorschlag2Model = new DefaultListModel();
-		liVorschlag2.setModel(liVorschlag2Model);
-		liVorschlag2Model.addElement("ID: "+variableID);
-		liVorschlag2Model.addElement("Hersteller: "+variableHer);
-		liVorschlag2Model.addElement("Modell-Nr.: "+variableModel);
-		liVorschlag2Model.addElement("Werkstoff: "+variableMat);
-	    liVorschlag2Model.addElement("Bearbeitung: "+variableBear);
-	    liVorschlag2Model.addElement("Radius: "+variableRad+" mm");
-	    liVorschlag2Model.addElement("Schnittgeschw.: "+variableVc+" m/min");
-	    liVorschlag2Model.addElement("Vorschub: "+variableF+" mm/U");
-	    liVorschlag2Model.addElement("Zustellung: "+variableAp+" mm");
-		
-		
-		JList liVorschlag3 = new JList();
-		DefaultListModel liVorschlag3Model = new DefaultListModel();
-		liVorschlag3Model.addElement("ID: "+variableID);
-		liVorschlag3Model.addElement("Hersteller: "+variableHer);
-		liVorschlag3Model.addElement("Modell-Nr.: "+variableModel);
-		liVorschlag3Model.addElement("Werkstoff: "+variableMat);
-	    liVorschlag3Model.addElement("Bearbeitung: "+variableBear);
-	    liVorschlag3Model.addElement("Radius: "+variableRad+" mm");
-	    liVorschlag3Model.addElement("Schnittgeschw.: "+variableVc+" m/min");
-	    liVorschlag3Model.addElement("Vorschub: "+variableF+" mm/U");
-	    liVorschlag3Model.addElement("Zustellung: "+variableAp+" mm");
+		JList liVorschlag1 = new JList(ergebnis);
+		JList liVorschlag2 = new JList(ergebnis);	
+		JList liVorschlag3 = new JList(ergebnis);
 		
 		/*********************************************************/
 		
 		JScrollPane liVorschlag1ScrollPane = new JScrollPane(liVorschlag1);
-		liVorschlag1ScrollPane.setBounds(70, 500, 250, 130);
+		liVorschlag1ScrollPane.setBounds(70, 450, 250, 170);
 		liVorschlag1ScrollPane.setBackground(new Color(0xFFFFFF));
 		cp.add(liVorschlag1ScrollPane);
 		
 		JScrollPane liVorschlag2ScrollPane = new JScrollPane(liVorschlag2);
-		liVorschlag2ScrollPane.setBounds(370, 500, 250, 130);
+		liVorschlag2ScrollPane.setBounds(370, 450, 250, 170);
 		liVorschlag2ScrollPane.setBackground(new Color(0xFFFFFF));
 		cp.add(liVorschlag2ScrollPane);
 		
 		JScrollPane liVorschlag3ScrollPane = new JScrollPane(liVorschlag3);
-		liVorschlag3ScrollPane.setBounds(670, 500, 250, 130);
+		liVorschlag3ScrollPane.setBounds(670, 450, 250, 170);
 		liVorschlag3ScrollPane.setBackground(new Color(0xFFFFFF));
 		cp.add(liVorschlag3ScrollPane);
 		
@@ -248,9 +212,8 @@ public class GUI{
 			variableBear = data.bear;
 			variableVc = data.vc;
 			variableF = data.f;
-			variableAp = data.ap;
+			variableAp= data.ap;
 		
-			
 			frame.repaint();
 			}
 			});
