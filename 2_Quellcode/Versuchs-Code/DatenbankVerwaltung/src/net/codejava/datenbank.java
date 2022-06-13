@@ -13,8 +13,20 @@ public class datenbank{
 	private String abfrage;
 	private int a; 
 	private String radius;
+	String iD = "keine Eingabe";
+	String her = "keine Eingabe";
+	String model = "keine Eingabe";
+	String mat  = "keine Eingabe"; 
+	String bear = "keine Eingabe";
+	String rad = "keine Eingabe";
+	String vc = "keine Eingabe";
+	String f = "keine Eingabe";
+	String ap = "keine Eingabe";
  	
-	datenbank(String material, String beaumfang, String radius){
+	datenbank(String material1, String beaumfang1, String radius1){
+		material1 = material;
+		beaumfang1 = beaumfang;
+		radius1 = radius;
 		databaseURL = "jdbc:ucanaccess://Database1.accdb"; 
 		//für TEST
 		
@@ -35,15 +47,15 @@ public class datenbank{
 							ResultSetMetaData rsmd = rs.getMetaData();		
 							int cols = rsmd.getColumnCount();		//bestimmen der größe der Tabelle 
 							while(rs.next()) {
-								variableID = rs.getString(1);
-								variableHer = rs.getString(2);
-								variableModel = rs.getString(3);
-								variableMat = rs.getString(5); 
-								variableBear = rs.getString(8);
-								variableRad = rs.getString(9);
-								variableVc = rs.getString(4);
-								variableF = rs.getString(6);
-								variableAp = rs.getString(7);
+								iD = rs.getString(1);
+								her = rs.getString(2);
+								model = rs.getString(3);
+								mat = rs.getString(5); 
+								bear = rs.getString(8);
+								rad = rs.getString(9);
+								vc = rs.getString(4);
+								f = rs.getString(6);
+								ap = rs.getString(7);
 								
 								
 								
@@ -59,10 +71,10 @@ public class datenbank{
 										}
 	}
 
-public static void main(String[] args) {
+//public static void main(String[] args) {
 
 	//datenbank one= new datenbank(); // TEST
 	
 	//one.getSchneidplatte();
 }
-}
+
