@@ -13,20 +13,29 @@ public class datenbank{
 	private String abfrage;
 	private int a; 
 	private String radius;
-	String iD = "keine Eingabe";
-	String her = "keine Eingabe";
-	String model = "keine Eingabe";
-	String mat  = "keine Eingabe"; 
-	String bear = "keine Eingabe";
-	String rad = "keine Eingabe";
-	String vc = "keine Eingabe";
-	String f = "keine Eingabe";
-	String ap = "keine Eingabe";
+	public StringBuffer iD;
+	protected StringBuffer her;
+	protected StringBuffer model;
+	protected StringBuffer mat; 
+	protected StringBuffer bear;
+	protected StringBuffer rad ;
+	protected StringBuffer vc ;
+	protected StringBuffer f;
+	protected StringBuffer ap ;
  	
 	datenbank(String material1, String beaumfang1, String radius1){
-		material1 = material;
-		beaumfang1 = beaumfang;
-		radius1 = radius;
+		  iD = new StringBuffer("keine Eingabe");
+		 her = new StringBuffer("keine Eingabe");
+		 model = new StringBuffer("keine Eingabe");
+		 mat  = new StringBuffer("keine Eingabe");
+		 bear = new StringBuffer("keine Eingabe");
+		 rad = new StringBuffer("keine Eingabe");
+		 vc = new StringBuffer("keine Eingabe");
+		 f = new StringBuffer("keine Eingabe");
+		 ap = new StringBuffer("keine Eingabe");
+		material = material1;
+		beaumfang = beaumfang1;
+		radius = radius1;
 		databaseURL = "jdbc:ucanaccess://Database1.accdb"; 
 		//für TEST
 		
@@ -46,23 +55,28 @@ public class datenbank{
 						ResultSet rs = stm.executeQuery(abfrage);	//anlegen von Result set Art neue Tabelle mit den zutreffenden Inhalten
 							ResultSetMetaData rsmd = rs.getMetaData();		
 							int cols = rsmd.getColumnCount();		//bestimmen der größe der Tabelle 
+							
 							while(rs.next()) {
-								iD = rs.getString(1);
-								her = rs.getString(2);
-								model = rs.getString(3);
-								mat = rs.getString(5); 
-								bear = rs.getString(8);
-								rad = rs.getString(9);
-								vc = rs.getString(4);
-								f = rs.getString(6);
-								ap = rs.getString(7);
+								//for(int i = 1; i<= cols; i++) {
+								//System.out.print(rs.getString(i)+ "\t");
 								
+								//}
+								iD.replace(0, 13,rs.getString(9));
+								her.replace(0, 13, rs.getString(1));
+								model.replace(0, 13, rs.getString(2));
+								mat.replace(0, 13, rs.getString(4)) ; 
+								bear.replace(0, 13, rs.getString(7)) ;
+								rad.replace(0, 13, rs.getString(8)) ;
+								vc.replace(0, 13, rs.getString(3));
+								f.replace(0, 13, rs.getString(5)) ;
+								ap.replace(0, 13, rs.getString(6));
 								
+							}
 								
-								System.out.println();
+								//System.out.println(her);
 								
 													//Ausgabe
-							}
+							
 							rs.close();					//ResultSet Schließen
 									}
 								catch (Exception e) {
@@ -71,10 +85,12 @@ public class datenbank{
 										}
 	}
 
-//public static void main(String[] args) {
+public static void main(String[] args) {
 
-	//datenbank one= new datenbank(); // TEST
+	datenbank one= new datenbank("Titan","Schruppen","1.2"); // TEST
 	
-	//one.getSchneidplatte();
+	one.getSchneidplatte();
 }
+}
+
 

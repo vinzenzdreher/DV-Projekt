@@ -23,22 +23,25 @@ import javax.swing.SpinnerListModel;
 import javax.swing.SwingConstants;
 
 public class GUI{
-	
+//	String eingabeWerkstoff;
+//	String eingabeBearbeitung;
+//	String eingabeRadius;
 	public GUI () {
 		
-		String [] werkstoff = {"Automatenstahl","Messing", "Aluminium","Einsatzstahl","Vergütungsstahl","Werkzeugstahl"};
-		String [] bearbeitung = {"Längsrundschruppen","Längsrundschlichten","Plandrehen"};
+		String [] werkstoff = {"Stahl","Harte Werkstoffe", "Aluminium","Nichtrostender Stahl","Titan","Gusseisen"};
+		String [] bearbeitung = {"Schruppen","Schlichten"};
 		String [] oberfläche = {"1", "1.6", "2.5", "4", "6.3", "10", "16", "25", "40", "63"};
 		String [] radius ={"0.1", "0.2", "0.4", "0.8", "1.0", "2.0", "4.0"};
-		String variableID = "keine Eingabe";
-		String variableHer = "keine Eingabe";
-		String variableModel = "keine Eingabe";
-		String variableMat  = "keine Eingabe"; 
-		String variableBear = "keine Eingabe";
-		String variableRad = "keine Eingabe";
-		String variableVc = "keine Eingabe";
-		String variableF = "keine Eingabe";
-		String variableAp = "keine Eingabe";
+		
+		StringBuffer variableID = new StringBuffer("keine Eingabe");
+		StringBuffer variableHer = new StringBuffer("keine Eingabe");
+		StringBuffer variableModel = new StringBuffer("keine Eingabe");
+		StringBuffer variableMat  = new StringBuffer("keine Eingabe");
+		StringBuffer variableBear = new StringBuffer("keine Eingabe");
+		StringBuffer variableRad = new StringBuffer("keine Eingabe");
+		StringBuffer variableVc = new StringBuffer("keine Eingabe");
+		StringBuffer variableF = new StringBuffer("keine Eingabe");
+		StringBuffer variableAp = new StringBuffer("keine Eingabe");
 		String [] ergebnis = {"ID: "+variableID, "Hersteller: "+variableHer, "Modell-Nr.: "+variableModel, "Werkstoff: "+variableMat, "Bearbeitung: "+variableBear, "Radius: "+variableRad+" mm", "Schnittgeschwindigkeit: "+variableVc+" m/min", "Vorschub: "+variableF+" mm/U", "Zustellung: "+variableAp+" mm"};
 		
 		JFrame frame = new JFrame("Werkzeugauswahl");
@@ -205,7 +208,8 @@ public class GUI{
 			
 			datenbank data = new datenbank(eingabeWerkstoff, eingabeBearbeitung, eingabeRadius);
 			data.getSchneidplatte();
-					
+			//String [] ergebnis = {"ID: "+data.iD, "Hersteller: "+variableHer, "Modell-Nr.: "+variableModel, "Werkstoff: "+variableMat, "Bearbeitung: "+variableBear, "Radius: "+variableRad+" mm", "Schnittgeschwindigkeit: "+variableVc+" m/min", "Vorschub: "+variableF+" mm/U", "Zustellung: "+variableAp+" mm"};		
+			//System.out.println(ergebnis[0]);
 			variableID = data.iD;
 			variableModel = data.model;
 			variableMat  = data.mat; 
