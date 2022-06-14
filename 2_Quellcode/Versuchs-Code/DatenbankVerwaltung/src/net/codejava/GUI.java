@@ -26,6 +26,30 @@ public class GUI{
 //	String eingabeWerkstoff;
 //	String eingabeBearbeitung;
 //	String eingabeRadius;
+	StringBuffer variableID;
+	StringBuffer variableHer;
+	StringBuffer variableModel;
+	StringBuffer variableMat;
+	StringBuffer variableBear;
+	StringBuffer variableRad;
+	StringBuffer variableVc;
+	StringBuffer variableF;
+	StringBuffer variableAp;
+	//StringBuffer[] ergebnis;
+	StringBuffer[] ergebnis;
+	StringBuffer id;
+	StringBuffer hersteller;
+	StringBuffer model;
+	StringBuffer material;
+	StringBuffer bear;
+	StringBuffer rad;
+	StringBuffer vc;
+	StringBuffer ap;
+	StringBuffer f;
+	
+	
+	
+	
 	public GUI () {
 		
 		String [] werkstoff = {"Stahl","Harte Werkstoffe", "Aluminium","Nichtrostender Stahl","Titan","Gusseisen"};
@@ -33,17 +57,35 @@ public class GUI{
 		String [] oberfläche = {"1", "1.6", "2.5", "4", "6.3", "10", "16", "25", "40", "63"};
 		String [] radius ={"0.1", "0.2", "0.4", "0.8", "1.0", "2.0", "4.0"};
 		
-		StringBuffer variableID = new StringBuffer("keine Eingabe");
-		StringBuffer variableHer = new StringBuffer("keine Eingabe");
-		StringBuffer variableModel = new StringBuffer("keine Eingabe");
-		StringBuffer variableMat  = new StringBuffer("keine Eingabe");
-		StringBuffer variableBear = new StringBuffer("keine Eingabe");
-		StringBuffer variableRad = new StringBuffer("keine Eingabe");
-		StringBuffer variableVc = new StringBuffer("keine Eingabe");
-		StringBuffer variableF = new StringBuffer("keine Eingabe");
-		StringBuffer variableAp = new StringBuffer("keine Eingabe");
-		String [] ergebnis = {"ID: "+variableID, "Hersteller: "+variableHer, "Modell-Nr.: "+variableModel, "Werkstoff: "+variableMat, "Bearbeitung: "+variableBear, "Radius: "+variableRad+" mm", "Schnittgeschwindigkeit: "+variableVc+" m/min", "Vorschub: "+variableF+" mm/U", "Zustellung: "+variableAp+" mm"};
+		 variableID = new StringBuffer("keine Eingabe");
+		 variableHer = new StringBuffer("keine Eingabe");
+		 variableModel = new StringBuffer("keine Eingabe");
+		 variableMat  = new StringBuffer("keine Eingabe");
+		 variableBear = new StringBuffer("keine Eingabe");
+		 variableRad = new StringBuffer("keine Eingabe");
+		 variableVc = new StringBuffer("keine Eingabe");
+		 variableF = new StringBuffer("keine Eingabe");
+		 variableAp = new StringBuffer("keine Eingabe");
+		 id = new StringBuffer("ID: ");
+		 hersteller = new StringBuffer("Hersteller: ");
+		 model = new StringBuffer("Modell-Nr.: ");
+		 material = new StringBuffer("Werkstoff: ");
+		 bear = new StringBuffer("Bearbeitungsart: ");
+		 rad = new StringBuffer("Radius: ");
+		 vc = new StringBuffer("Schnittgeschwindigkeit: ");
+		 ap = new StringBuffer("Zustellung: ");
+		 f = new StringBuffer("Vorschub: ");
+		 
+		 
+		 //StringBuffer[] ergebnis = {id variableID, hersteller+variableHer}; 
+		StringBuffer test = new StringBuffer("id: "+variableID);
+		ergebnis = new StringBuffer[] {id.append(variableID)};// hersteller+variableHer};  "Modell-Nr.: "+variableModel, "Werkstoff: "+variableMat, "Bearbeitung: "+variableBear, "Radius: "+variableRad+" mm", "Schnittgeschwindigkeit: "+variableVc+" m/min", "Vorschub: "+variableF+" mm/U", "Zustellung: "+variableAp+" mm"};
 		
+//		StringBuffer buffers[] = new StringBuffer[ergebnis.length];
+//		for(int i = 0; i<ergebnis.length; i++) {
+//			buffers[i] = new StringBuffer(ergebnis[i]);
+//			
+//		}
 		JFrame frame = new JFrame("Werkzeugauswahl");
 
 		int frame_x = 1000; //Breite des Programmfensters in Pixel
@@ -159,8 +201,8 @@ public class GUI{
 		/*********************************************************/
 		
 		JList liVorschlag1 = new JList(ergebnis);
-		JList liVorschlag2 = new JList(ergebnis);	
-		JList liVorschlag3 = new JList(ergebnis);
+//		JList liVorschlag2 = new JList(ergebnis);	
+//		JList liVorschlag3 = new JList(ergebnis);
 		
 		/*********************************************************/
 		
@@ -168,17 +210,17 @@ public class GUI{
 		liVorschlag1ScrollPane.setBounds(70, 450, 250, 170);
 		liVorschlag1ScrollPane.setBackground(new Color(0xFFFFFF));
 		cp.add(liVorschlag1ScrollPane);
-		
-		JScrollPane liVorschlag2ScrollPane = new JScrollPane(liVorschlag2);
-		liVorschlag2ScrollPane.setBounds(370, 450, 250, 170);
-		liVorschlag2ScrollPane.setBackground(new Color(0xFFFFFF));
-		cp.add(liVorschlag2ScrollPane);
-		
-		JScrollPane liVorschlag3ScrollPane = new JScrollPane(liVorschlag3);
-		liVorschlag3ScrollPane.setBounds(670, 450, 250, 170);
-		liVorschlag3ScrollPane.setBackground(new Color(0xFFFFFF));
-		cp.add(liVorschlag3ScrollPane);
-		
+//		
+//		JScrollPane liVorschlag2ScrollPane = new JScrollPane(liVorschlag2);
+//		liVorschlag2ScrollPane.setBounds(370, 450, 250, 170);
+//		liVorschlag2ScrollPane.setBackground(new Color(0xFFFFFF));
+//		cp.add(liVorschlag2ScrollPane);
+//		
+//		JScrollPane liVorschlag3ScrollPane = new JScrollPane(liVorschlag3);
+//		liVorschlag3ScrollPane.setBounds(670, 450, 250, 170);
+//		liVorschlag3ScrollPane.setBackground(new Color(0xFFFFFF));
+//		cp.add(liVorschlag3ScrollPane);
+//		
 		/*********************************************************/
 		
 	/*	JMenuBar mb = new JMenuBar();
@@ -199,7 +241,7 @@ public class GUI{
 		/*********************************************************/
 	
 		bSuchen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+ 			public void actionPerformed(ActionEvent e) {
 			String eingabeWerkstoff = (String)cbWerkstoff.getSelectedItem();
 			String eingabeBearbeitung = (String)cbBearbeitung.getSelectedItem();
 			String eingabeRadius = (String)spRadius.getValue();
@@ -210,13 +252,20 @@ public class GUI{
 			data.getSchneidplatte();
 			//String [] ergebnis = {"ID: "+data.iD, "Hersteller: "+variableHer, "Modell-Nr.: "+variableModel, "Werkstoff: "+variableMat, "Bearbeitung: "+variableBear, "Radius: "+variableRad+" mm", "Schnittgeschwindigkeit: "+variableVc+" m/min", "Vorschub: "+variableF+" mm/U", "Zustellung: "+variableAp+" mm"};		
 			//System.out.println(ergebnis[0]);
-			variableID = data.iD;
+			StringBuffer test1 = new StringBuffer(data.iD);
+			variableID.replace(0, 13, test1.toString());
 			variableModel = data.model;
 			variableMat  = data.mat; 
 			variableBear = data.bear;
 			variableVc = data.vc;
 			variableF = data.f;
 			variableAp= data.ap;
+			ergebnis = new StringBuffer[] {id.append(variableID)};
+			
+			System.out.println(variableID);
+			System.out.println(ergebnis[0]);
+			
+			
 		
 			frame.repaint();
 			}
