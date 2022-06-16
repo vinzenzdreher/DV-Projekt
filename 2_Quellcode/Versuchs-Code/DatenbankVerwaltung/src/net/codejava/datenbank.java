@@ -13,26 +13,30 @@ public class datenbank{
 	private String abfrage;
 	private int a; 
 	private String radius;
-	public StringBuffer iD;
-	protected StringBuffer her;
-	protected StringBuffer model;
-	protected StringBuffer mat; 
-	protected StringBuffer bear;
-	protected StringBuffer rad ;
-	protected StringBuffer vc ;
-	protected StringBuffer f;
-	protected StringBuffer ap ;
+	public StringBuffer[] iD;
+	protected StringBuffer[] her;
+	protected StringBuffer[] model;
+	protected StringBuffer[] mat; 
+	protected StringBuffer[] bear;
+	protected StringBuffer[] rad ;
+	protected StringBuffer[] vc ;
+	protected StringBuffer[] f;
+	protected StringBuffer[] ap ;
+	protected StringBuffer kE;
+	String[] test = new String[3];
  	
 	datenbank(String material1, String beaumfang1, String radius1){
-		  iD = new StringBuffer("keine Eingabe");
-		 her = new StringBuffer("keine Eingabe");
-		 model = new StringBuffer("keine Eingabe");
-		 mat  = new StringBuffer("keine Eingabe");
-		 bear = new StringBuffer("keine Eingabe");
-		 rad = new StringBuffer("keine Eingabe");
-		 vc = new StringBuffer("keine Eingabe");
-		 f = new StringBuffer("keine Eingabe");
-		 ap = new StringBuffer("keine Eingabe");
+		kE = new StringBuffer("keine Eingabe");  
+		iD = new StringBuffer[] {kE,kE,kE};
+		her = new StringBuffer[]{kE,kE,kE};
+		model = new StringBuffer[]{kE,kE,kE};
+		mat  = new StringBuffer[]{kE,kE,kE};
+		bear = new StringBuffer[]{kE,kE,kE};
+		rad = new StringBuffer[]{kE,kE,kE};
+		vc = new StringBuffer[]{kE,kE,kE};
+		f = new StringBuffer[]{kE,kE,kE};
+		ap = new StringBuffer[]{kE,kE,kE};
+		
 		material = material1;
 		beaumfang = beaumfang1;
 		radius = radius1;
@@ -56,29 +60,55 @@ public class datenbank{
 							ResultSetMetaData rsmd = rs.getMetaData();		
 							int cols = rsmd.getColumnCount();		//bestimmen der größe der Tabelle 
 							
+							
+						for(int i = 0; i<3; i++) {
 							while(rs.next()) {
-								//for(int i = 1; i<= cols; i++) {
-								//System.out.print(rs.getString(i)+ "\t");
+								 
+								//test[i]= rs.getString(9);
+								iD[i] = new StringBuffer(rs.getString(9));
+								her[i] = new StringBuffer(rs.getString(1));
+								model[i] = new StringBuffer(rs.getString(2));
+								mat[i] = new StringBuffer(rs.getString(4));
+								bear[i] = new StringBuffer(rs.getString(7));
+								rad[i] = new StringBuffer(rs.getString(8));
+								vc[i] = new StringBuffer(rs.getString(3));
+								f[i] = new StringBuffer(rs.getString(5));
+								ap[i] = new StringBuffer(rs.getString(6));
+								//System.out.print(iD[i]);
+								break;
 								
-								//}
-								iD.replace(0, 13,rs.getString(9));
-								her.replace(0, 13, rs.getString(1));
-								model.replace(0, 13, rs.getString(2));
-								mat.replace(0, 13, rs.getString(4)) ; 
-								bear.replace(0, 13, rs.getString(7)) ;
-								rad.replace(0, 13, rs.getString(8)) ;
-								vc.replace(0, 13, rs.getString(3));
-								f.replace(0, 13, rs.getString(5)) ;
-								ap.replace(0, 13, rs.getString(6));
 								
+								
+								
+								//System.out.println(iD[i]);
+//								iD[i].replace(0,13,rs.getString(9));
+//								System.out.println(her[i]);
+//								her[i].replace(0, 13, rs.getString(1));
+//								System.out.println(her[i]);
+//								model[i].replace(0, 13, rs.getString(2));
+//								System.out.println(her[i]);
+//								mat[i].replace(0, 13, rs.getString(4)) ;
+//								System.out.println(her[i]);
+//								bear[i].replace(0, 13, rs.getString(7)) ;
+//								System.out.println(her[i]);
+//								rad[i].replace(0, 13, rs.getString(8)) ;
+//								System.out.println(her[i]);
+//								vc[i].replace(0, 13, rs.getString(3));
+//								System.out.println(her[i]);
+//								f[i].replace(0, 13, rs.getString(5)) ;
+//								System.out.println(her[i]);
+//								ap[i].replace(0, 13, rs.getString(6));
+//								System.out.println(her[i]);
+							}
 							}
 								
-								//System.out.println(her);
-								
-													//Ausgabe
-							
-							rs.close();					//ResultSet Schließen
-									}
+								//rs.close();					//ResultSet Schließen
+//								System.out.println(iD[0]);
+//								System.out.println(iD[1]);
+//								System.out.println(iD[2]);	
+		}
+		
+						
 								catch (Exception e) {
 										e.printStackTrace();
 			
@@ -87,7 +117,7 @@ public class datenbank{
 
 public static void main(String[] args) {
 
-	datenbank one= new datenbank("Titan","Schruppen","1.2"); // TEST
+	datenbank one= new datenbank("Stahl","Schruppen","0.4"); // TEST
 	
 	one.getSchneidplatte();
 }

@@ -26,15 +26,15 @@ public class GUI{
 //	String eingabeWerkstoff;
 //	String eingabeBearbeitung;
 //	String eingabeRadius;
-	StringBuffer variableID;
-	StringBuffer variableHer;
-	StringBuffer variableModel;
-	StringBuffer variableMat;
-	StringBuffer variableBear;
-	StringBuffer variableRad;
-	StringBuffer variableVc;
-	StringBuffer variableF;
-	StringBuffer variableAp;
+	StringBuffer[] variableID;
+	StringBuffer[] variableHer;
+	StringBuffer[] variableModel;
+	StringBuffer[] variableMat;
+	StringBuffer[] variableBear;
+	StringBuffer[] variableRad;
+	StringBuffer[] variableVc;
+	StringBuffer[] variableF;
+	StringBuffer[] variableAp;
 	//StringBuffer[] ergebnis;
 	StringBuffer[] ergebnis;
 	StringBuffer id;
@@ -46,7 +46,12 @@ public class GUI{
 	StringBuffer vc;
 	StringBuffer ap;
 	StringBuffer f;
+	String test1;
+	StringBuffer test2;
+	StringBuffer ergebnisarr[][];
+	StringBuffer kE2; 
 	
+	StringBuffer kE3;
 	
 	
 	
@@ -56,16 +61,17 @@ public class GUI{
 		String [] bearbeitung = {"Schruppen","Schlichten"};
 		String [] oberfläche = {"1", "1.6", "2.5", "4", "6.3", "10", "16", "25", "40", "63"};
 		String [] radius ={"0.1", "0.2", "0.4", "0.8", "1.0", "2.0", "4.0"};
-		
-		 variableID = new StringBuffer("keine Eingabe");
-		 variableHer = new StringBuffer("keine Eingabe");
-		 variableModel = new StringBuffer("keine Eingabe");
-		 variableMat  = new StringBuffer("keine Eingabe");
-		 variableBear = new StringBuffer("keine Eingabe");
-		 variableRad = new StringBuffer("keine Eingabe");
-		 variableVc = new StringBuffer("keine Eingabe");
-		 variableF = new StringBuffer("keine Eingabe");
-		 variableAp = new StringBuffer("keine Eingabe");
+		 kE2= new StringBuffer("keine Eingabe");
+		 kE3 = new StringBuffer("keine Eingabe1");
+		 variableID = new StringBuffer[]{kE2,kE2,kE2};
+		 variableHer = new StringBuffer[]{kE2,kE2,kE2};
+		 variableModel = new StringBuffer[]{kE2,kE2,kE2};
+		 variableMat  = new StringBuffer[]{kE2,kE2,kE2};
+		 variableBear = new StringBuffer[]{kE2,kE2,kE2};
+		 variableRad = new StringBuffer[]{kE2,kE2,kE2};
+		 variableVc = new StringBuffer[]{kE2,kE2,kE2};
+		 variableF = new StringBuffer[]{kE2,kE2,kE2};
+		 variableAp = new StringBuffer[]{kE2,kE2,kE2};
 		 id = new StringBuffer("ID: ");
 		 hersteller = new StringBuffer("Hersteller: ");
 		 model = new StringBuffer("Modell-Nr.: ");
@@ -78,8 +84,19 @@ public class GUI{
 		 
 		 
 		 //StringBuffer[] ergebnis = {id variableID, hersteller+variableHer}; 
-		StringBuffer test = new StringBuffer("id: "+variableID);
-		ergebnis = new StringBuffer[] {id.append(variableID)};// hersteller+variableHer};  "Modell-Nr.: "+variableModel, "Werkstoff: "+variableMat, "Bearbeitung: "+variableBear, "Radius: "+variableRad+" mm", "Schnittgeschwindigkeit: "+variableVc+" m/min", "Vorschub: "+variableF+" mm/U", "Zustellung: "+variableAp+" mm"};
+		ergebnisarr = new StringBuffer[3][];
+		ergebnis = new StringBuffer[] {id.append(variableID[1]),
+				hersteller.append(variableHer[1]),
+				model.append(variableModel[1]),
+				material.append(variableMat[1]),
+				bear.append(variableBear[1]),
+				rad.append(variableRad[1]),
+				vc.append(variableVc[1]),
+				ap.append(variableAp[1]),
+				f.append(variableF[1])}; 
+		 ergebnisarr[0] = ergebnis;
+		 ergebnisarr[1]= ergebnis;
+		 ergebnisarr[2]= ergebnis;
 		
 //		StringBuffer buffers[] = new StringBuffer[ergebnis.length];
 //		for(int i = 0; i<ergebnis.length; i++) {
@@ -200,9 +217,9 @@ public class GUI{
 		
 		/*********************************************************/
 		
-		JList liVorschlag1 = new JList(ergebnis);
-//		JList liVorschlag2 = new JList(ergebnis);	
-//		JList liVorschlag3 = new JList(ergebnis);
+		JList liVorschlag1 = new JList(ergebnisarr[0]);
+		JList liVorschlag2 = new JList(ergebnisarr[1]);	
+		JList liVorschlag3 = new JList(ergebnisarr[2]);
 		
 		/*********************************************************/
 		
@@ -210,17 +227,17 @@ public class GUI{
 		liVorschlag1ScrollPane.setBounds(70, 450, 250, 170);
 		liVorschlag1ScrollPane.setBackground(new Color(0xFFFFFF));
 		cp.add(liVorschlag1ScrollPane);
-//		
-//		JScrollPane liVorschlag2ScrollPane = new JScrollPane(liVorschlag2);
-//		liVorschlag2ScrollPane.setBounds(370, 450, 250, 170);
-//		liVorschlag2ScrollPane.setBackground(new Color(0xFFFFFF));
-//		cp.add(liVorschlag2ScrollPane);
-//		
-//		JScrollPane liVorschlag3ScrollPane = new JScrollPane(liVorschlag3);
-//		liVorschlag3ScrollPane.setBounds(670, 450, 250, 170);
-//		liVorschlag3ScrollPane.setBackground(new Color(0xFFFFFF));
-//		cp.add(liVorschlag3ScrollPane);
-//		
+		
+		JScrollPane liVorschlag2ScrollPane = new JScrollPane(liVorschlag2);
+		liVorschlag2ScrollPane.setBounds(370, 450, 250, 170);
+		liVorschlag2ScrollPane.setBackground(new Color(0xFFFFFF));
+		cp.add(liVorschlag2ScrollPane);
+		
+		JScrollPane liVorschlag3ScrollPane = new JScrollPane(liVorschlag3);
+		liVorschlag3ScrollPane.setBounds(670, 450, 250, 170);
+		liVorschlag3ScrollPane.setBackground(new Color(0xFFFFFF));
+		cp.add(liVorschlag3ScrollPane);
+		
 		/*********************************************************/
 		
 	/*	JMenuBar mb = new JMenuBar();
@@ -250,20 +267,35 @@ public class GUI{
 			
 			datenbank data = new datenbank(eingabeWerkstoff, eingabeBearbeitung, eingabeRadius);
 			data.getSchneidplatte();
-			//String [] ergebnis = {"ID: "+data.iD, "Hersteller: "+variableHer, "Modell-Nr.: "+variableModel, "Werkstoff: "+variableMat, "Bearbeitung: "+variableBear, "Radius: "+variableRad+" mm", "Schnittgeschwindigkeit: "+variableVc+" m/min", "Vorschub: "+variableF+" mm/U", "Zustellung: "+variableAp+" mm"};		
-			//System.out.println(ergebnis[0]);
-			StringBuffer test1 = new StringBuffer(data.iD);
-			variableID.replace(0, 13, test1.toString());
-			variableModel = data.model;
-			variableMat  = data.mat; 
-			variableBear = data.bear;
-			variableVc = data.vc;
-			variableF = data.f;
-			variableAp= data.ap;
-			ergebnis = new StringBuffer[] {id.append(variableID)};
 			
-			System.out.println(variableID);
-			System.out.println(ergebnis[0]);
+		for(int i = 0; i<3;i++) {
+			variableID[i] = data.iD[i];
+			variableHer[i] = data.her[i];
+			variableModel[i] = data.model[i];
+			variableMat[i]  = data.mat[i]; 
+			variableBear[i] = data.bear[i];
+			variableRad[i] = data.rad[i];
+			variableVc[i] = data.vc[i];
+			variableF[i] = data.f[i];
+			variableAp[i] = data.ap[i];
+			
+			
+			ergebnisarr[i]= new StringBuffer[] {id.insert(4,variableID[i].toString()),
+					hersteller.replace(12,100,variableHer[i].toString()),
+					model.replace(12,100,variableModel[i].toString()),
+					material.replace(11,100,variableMat[i].toString()),
+					bear.replace(17,100,variableBear[i].toString()),
+					rad.replace(8,100, variableRad[i].toString()),
+					vc.replace(24,100,variableVc[i].toString()),
+					ap.replace(12,100,variableAp[i].toString()),
+					f.replace(10,100,variableF[i].toString())};
+		}
+			
+			
+			
+			//System.out.println(variableID[]);
+		
+			//System.out.println(ergebnis[0]);
 			
 			
 		
