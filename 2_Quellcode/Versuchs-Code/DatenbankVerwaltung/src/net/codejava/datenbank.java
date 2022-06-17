@@ -13,35 +13,35 @@ public class datenbank{
 	private String abfrage;
 	private int a; 
 	private String radius;
-	public StringBuffer[] iD;
-	protected StringBuffer[] her;
-	protected StringBuffer[] model;
-	protected StringBuffer[] mat; 
-	protected StringBuffer[] bear;
-	protected StringBuffer[] rad ;
-	protected StringBuffer[] vc ;
-	protected StringBuffer[] f;
-	protected StringBuffer[] ap ;
-	protected StringBuffer kE;
+	public String[] iD;
+	protected String[] her;
+	protected String[] model;
+	protected String[] mat; 
+	protected String[] bear;
+	protected String[] rad ;
+	protected String[] vc ;
+	protected String[] f;
+	protected String[] ap ;
+	protected String kE;
 	String[] test = new String[3];
  	
 	datenbank(String material1, String beaumfang1, String radius1){
-		kE = new StringBuffer("keine Eingabe");  
-		iD = new StringBuffer[] {kE,kE,kE};
-		her = new StringBuffer[]{kE,kE,kE};
-		model = new StringBuffer[]{kE,kE,kE};
-		mat  = new StringBuffer[]{kE,kE,kE};
-		bear = new StringBuffer[]{kE,kE,kE};
-		rad = new StringBuffer[]{kE,kE,kE};
-		vc = new StringBuffer[]{kE,kE,kE};
-		f = new StringBuffer[]{kE,kE,kE};
-		ap = new StringBuffer[]{kE,kE,kE};
+		kE = "keine Eingabe";  
+		iD = new String[] {kE,kE,kE};
+		her = new String[]{kE,kE,kE};
+		model = new String[]{kE,kE,kE};
+		mat  = new String[]{kE,kE,kE};
+		bear = new String[]{kE,kE,kE};
+		rad = new String[]{kE,kE,kE};
+		vc = new String[]{kE,kE,kE};
+		f = new String[]{kE,kE,kE};
+		ap = new String[]{kE,kE,kE};
 		
 		material = material1;
 		beaumfang = beaumfang1;
 		radius = radius1;
 		databaseURL = "jdbc:ucanaccess://Database1.accdb"; 
-		//für TEST
+		//fï¿½r TEST
 		
 	}
 	public void getSchneidplatte() {
@@ -58,22 +58,22 @@ public class datenbank{
 					Statement stm = con.createStatement();  //Statement bilden
 						ResultSet rs = stm.executeQuery(abfrage);	//anlegen von Result set Art neue Tabelle mit den zutreffenden Inhalten
 							ResultSetMetaData rsmd = rs.getMetaData();		
-							int cols = rsmd.getColumnCount();		//bestimmen der größe der Tabelle 
+							int cols = rsmd.getColumnCount();		//bestimmen der grï¿½ï¿½e der Tabelle 
 							
 							
 						for(int i = 0; i<3; i++) {
 							while(rs.next()) {
 								 
 								//test[i]= rs.getString(9);
-								iD[i] = new StringBuffer(rs.getString(9));
-								her[i] = new StringBuffer(rs.getString(1));
-								model[i] = new StringBuffer(rs.getString(2));
-								mat[i] = new StringBuffer(rs.getString(4));
-								bear[i] = new StringBuffer(rs.getString(7));
-								rad[i] = new StringBuffer(rs.getString(8));
-								vc[i] = new StringBuffer(rs.getString(3));
-								f[i] = new StringBuffer(rs.getString(5));
-								ap[i] = new StringBuffer(rs.getString(6));
+								iD[i] = rs.getString(9);
+								her[i] = rs.getString(1);
+								model[i] = rs.getString(2);
+								mat[i] = rs.getString(4);
+								bear[i] = rs.getString(7);
+								rad[i] = rs.getString(8);
+								vc[i] = rs.getString(3);
+								f[i] = rs.getString(5);
+								ap[i] = rs.getString(6);
 								//System.out.print(iD[i]);
 								break;
 								
@@ -102,7 +102,7 @@ public class datenbank{
 							}
 							}
 								
-								//rs.close();					//ResultSet Schließen
+								//rs.close();					//ResultSet Schlieï¿½en
 //								System.out.println(iD[0]);
 //								System.out.println(iD[1]);
 //								System.out.println(iD[2]);	
