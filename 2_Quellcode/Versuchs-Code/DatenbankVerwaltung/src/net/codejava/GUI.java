@@ -42,6 +42,8 @@ public class GUI{
 	String vc;
 	String ap;
 	String f;
+	String test1;
+	StringBuffer test2;
 	String ergebnisarr[][];
 	String kE2; 
 
@@ -54,8 +56,8 @@ public class GUI{
 		String [] werkstoff = {"Stahl","Harte Werkstoffe", "Aluminium","Nichtrostender Stahl","Titan","Gusseisen"};
 		String [] bearbeitung = {"Schruppen","Schlichten"};
 		String [] oberflaeche = {"1", "1.6", "2.5", "4", "6.3", "10", "16", "25", "40", "63"};
-		String [] radius ={"0.2","0.4", "0.8"};
-		kE2= new String ("keine Eingabe");
+		String [] radius ={"0.2","0.4", "0.8","1.2"};
+		kE2= "Keine Eingabe";
 		variableID = new String[]{kE2,kE2,kE2};
 		variableHer = new String[]{kE2,kE2,kE2};
 		variableModel = new String[]{kE2,kE2,kE2};
@@ -77,15 +79,15 @@ public class GUI{
 
 
 		ergebnisarr = new String[3][];
-		ergebnis = new String []{id+variableID[1].toString(),
-				hersteller+variableHer[1].toString(),
-				model+variableModel[1].toString(),
-				material+variableMat[1].toString(),
-				bear+variableBear[1].toString(),
-				rad+variableRad[1].toString(),
-				vc+variableVc[1].toString(),
-				ap+variableAp[1].toString(),
-				f+variableF[1].toString()}; 
+		ergebnis = new String []{id+variableID[1],
+				hersteller+variableHer[1],
+				model+variableModel[1],
+				material+variableMat[1],
+				bear+variableBear[1],
+				rad+variableRad[1],
+				vc+variableVc[1],
+				ap+variableAp[1],
+				f+variableF[1]}; 
 
 		ergebnisarr[0] = ergebnis;
 		ergebnisarr[1]= ergebnis;
@@ -245,28 +247,28 @@ public class GUI{
 				for(int i = 0; i<3;i++) {
 					variableID[i] = data.iD[i];
 					variableHer[i] = data.her[i];
-//					if(variableHer[i].equals(kE2)) {
-//						variableHer[i] = "Kein Treffer";
-//					}
 					variableModel[i] = data.model[i];
 					variableMat[i]  = data.mat[i]; 
 					variableBear[i] = data.bear[i];
 					variableRad[i] = data.rad[i];
 					variableVc[i] = data.vc[i];
 					variableF[i] = data.f[i];
-					if (Double.parseDouble(variableF[i])>vorschub) {
-						variableF[i]= String.valueOf(vorschub);
-					}
+//					if (Double.parseDouble(variableF[i])>vorschub) {
+//						variableF[i]= String.valueOf(vorschub);
+//					}
 					variableAp[i] = data.ap[i];
+					
+					
 					ergebnisarr[i]= new String[] {id+variableID[i],
 							hersteller+variableHer[i],
 							model+variableModel[i],
 							material+variableMat[i],
 							bear+variableBear[i],
-							rad+variableRad[i],
-							vc+variableVc[i],
-							ap+variableAp[i],
-							f+variableF[i]};
+							rad+variableRad[i]+" mm",
+							vc+variableVc[i]+" m/min",
+							ap+variableAp[i]+" mm",
+							f+variableF[i]+" mm/U"};
+					
 
 
 				}
@@ -288,7 +290,6 @@ public class GUI{
 			}
 		});
 	}
-
 
 
 }

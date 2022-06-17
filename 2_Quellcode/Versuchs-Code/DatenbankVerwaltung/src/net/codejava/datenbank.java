@@ -12,7 +12,7 @@ public class datenbank{
 	private String beaumfang;
 	private String abfrage;
 	private String radius;
-	public String[] iD;
+	protected String[] iD;
 	protected String[] her;
 	protected String[] model;
 	protected String[] mat; 
@@ -21,11 +21,10 @@ public class datenbank{
 	protected String[] vc ;
 	protected String[] f;
 	protected String[] ap ;
-	protected String kE;
-	String[] test = new String[3];
+	public String kE;
 
 	datenbank(String material1, String beaumfang1, String radius1){
-		kE = "keine Eingabe";  
+		kE = new String ("Keine Eingabe");  
 		iD = new String[] {kE,kE,kE};
 		her = new String[]{kE,kE,kE};
 		model = new String[]{kE,kE,kE};
@@ -40,7 +39,7 @@ public class datenbank{
 		beaumfang = beaumfang1;
 		radius = radius1;
 		databaseURL = "jdbc:ucanaccess://Database1.accdb"; 
-		//f�r TEST
+		//fuer TEST
 
 	}
 	public void getSchneidplatte() {
@@ -57,13 +56,12 @@ public class datenbank{
 			Statement stm = con.createStatement();  //Statement bilden
 			ResultSet rs = stm.executeQuery(abfrage);	//anlegen von Result set Art neue Tabelle mit den zutreffenden Inhalten
 			ResultSetMetaData rsmd = rs.getMetaData();		
-			int cols = rsmd.getColumnCount();		//bestimmen der gr��e der Tabelle 
+			int cols = rsmd.getColumnCount();		//bestimmen der groesse der Tabelle 
 
 
 			for(int i = 0; i<3; i++) {
 				while(rs.next()) {
 
-					//test[i]= rs.getString(9);
 					iD[i] = rs.getString(9);
 					her[i] = rs.getString(1);
 					model[i] = rs.getString(2);
@@ -90,6 +88,7 @@ public class datenbank{
 
 		}
 	}
+	
 
 }
 
