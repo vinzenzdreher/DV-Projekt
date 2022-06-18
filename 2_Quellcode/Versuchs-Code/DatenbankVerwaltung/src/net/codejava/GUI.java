@@ -45,7 +45,8 @@ public class GUI{
 	String test1;
 	StringBuffer test2;
 	String ergebnisarr[][];
-	String kE2; 
+	String kE2;
+	String kT;
 
 
 
@@ -58,6 +59,7 @@ public class GUI{
 		String [] oberflaeche = {"1", "1.6", "2.5", "4", "6.3", "10", "16", "25", "40", "63"};
 		String [] radius ={"0.2","0.4", "0.8","1.2"};
 		kE2= "Keine Eingabe";
+		kT = "Kein Treffer";
 		variableID = new String[]{kE2,kE2,kE2};
 		variableHer = new String[]{kE2,kE2,kE2};
 		variableModel = new String[]{kE2,kE2,kE2};
@@ -72,10 +74,10 @@ public class GUI{
 		model = "Modell-Nr.: ";
 		material = "Werkstoff: ";
 		bear = "Bearbeitungsart: ";
-		rad = "Radius: ";
-		vc = "Schnittgeschwindigkeit: ";
-		ap = "Zustellung: ";
-		f = "Vorschub: ";
+		rad = "Radius [mm]: ";
+		vc = "Schnittgeschwindigkeit [m/min]: ";
+		ap = "Zustellung [mm]: ";
+		f = "Vorschub [mm]: ";
 
 
 		ergebnisarr = new String[3][];
@@ -215,17 +217,17 @@ public class GUI{
 		/*********************************************************/
 
 		JScrollPane liVorschlag1ScrollPane = new JScrollPane(liVorschlag1);
-		liVorschlag1ScrollPane.setBounds(70, 450, 250, 170);
+		liVorschlag1ScrollPane.setBounds(55, 450, 280, 170);
 		liVorschlag1ScrollPane.setBackground(new Color(0xFFFFFF));
 		cp.add(liVorschlag1ScrollPane);
 
 		JScrollPane liVorschlag2ScrollPane = new JScrollPane(liVorschlag2);
-		liVorschlag2ScrollPane.setBounds(370, 450, 250, 170);
+		liVorschlag2ScrollPane.setBounds(355, 450, 280, 170);
 		liVorschlag2ScrollPane.setBackground(new Color(0xFFFFFF));
 		cp.add(liVorschlag2ScrollPane);
 
 		JScrollPane liVorschlag3ScrollPane = new JScrollPane(liVorschlag3);
-		liVorschlag3ScrollPane.setBounds(670, 450, 250, 170);
+		liVorschlag3ScrollPane.setBounds(655, 450, 280, 170);
 		liVorschlag3ScrollPane.setBackground(new Color(0xFFFFFF));
 		cp.add(liVorschlag3ScrollPane);
 		frame.repaint();
@@ -253,10 +255,25 @@ public class GUI{
 					variableRad[i] = data.rad[i];
 					variableVc[i] = data.vc[i];
 					variableF[i] = data.f[i];
-//					if (Double.parseDouble(variableF[i])>vorschub) {
-//						variableF[i]= String.valueOf(vorschub);
-//					}
 					variableAp[i] = data.ap[i];
+					try {
+						if (Double.parseDouble(variableF[i])>vorschub) {
+							variableF[i]= String.valueOf(vorschub);
+						}
+					} catch(NumberFormatException e1) {
+						variableID[i] = kT;
+						variableHer[i] = kT;
+						variableModel[i] = kT;
+						variableMat[i]  = kT; 
+						variableBear[i] = kT;
+						variableRad[i] = kT;
+						variableVc[i] = kT;
+						variableF[i] = kT;
+						variableAp[i] = kT;
+					}
+					
+				
+					
 					
 					
 					ergebnisarr[i]= new String[] {id+variableID[i],
@@ -264,10 +281,10 @@ public class GUI{
 							model+variableModel[i],
 							material+variableMat[i],
 							bear+variableBear[i],
-							rad+variableRad[i]+" mm",
-							vc+variableVc[i]+" m/min",
-							ap+variableAp[i]+" mm",
-							f+variableF[i]+" mm/U"};
+							rad+variableRad[i],
+							vc+variableVc[i],
+							ap+variableAp[i],
+							f+variableF[i]};
 					
 
 
