@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -95,7 +96,8 @@ public class GUI{
 		ergebnisarr[1]= ergebnis;
 		ergebnisarr[2]= ergebnis;
 
-
+		ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("Schneidplatte.jpg"));
+		
 		JFrame frame = new JFrame("Werkzeugauswahl");
 
 		int frame_x = 1000; //Breite des Programmfensters in Pixel
@@ -110,6 +112,7 @@ public class GUI{
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setBackground(new Color(0xC0C0C0));
+		frame.setIconImage(logo.getImage());
 		/*Image icon = Toolkit.getDefaultToolkit().getImage("");
 															frame.setIconImage(icon);*/
 		Container cp = frame.getContentPane();
@@ -179,6 +182,7 @@ public class GUI{
 		spOberflaeche.setFont(new Font("@HP Simplified Hans", Font.BOLD, 16));
 		spOberflaeche.setBackground(new Color(0xFFFFFF));
 		cp.add(spOberflaeche);
+		spOberflaeche.setVisible(true);
 
 		JSpinner spRadius = new JSpinner();
 		SpinnerListModel spRadiusModel = new SpinnerListModel (radius);
@@ -189,6 +193,7 @@ public class GUI{
 		spRadius.setFont(new Font("@HP Simplified Hans", Font.BOLD, 16));
 		spRadius.setBackground(new Color(0xFFFFFF));
 		cp.add(spRadius);
+		spRadius.setVisible(true);
 
 		/*********************************************************/
 
@@ -199,6 +204,8 @@ public class GUI{
 		cbWerkstoff.setSelectedItem(0);
 		cbWerkstoff.setBackground(new Color(0xFFFFFF));
 		cp.add(cbWerkstoff);
+		cbWerkstoff.setVisible(true);
+		
 
 		JComboBox cbBearbeitung = new JComboBox();
 		DefaultComboBoxModel cbBearbeitungModel = new DefaultComboBoxModel(bearbeitung);
@@ -207,6 +214,7 @@ public class GUI{
 		cbBearbeitung.setSelectedItem(0);
 		cbBearbeitung.setBackground(new Color(0xFFFFFF));
 		cp.add(cbBearbeitung);
+		cbBearbeitung.setVisible(true);
 
 		/*********************************************************/
 
@@ -235,6 +243,10 @@ public class GUI{
 
 		/*********************************************************/
 
+		//ImageIcon logo = new ImageIcon(".//res//Schneidplatte.jpg");
+//		ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("Schneidplatte.jpg"));
+		
+		/*********************************************************/
 		bSuchen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String eingabeWerkstoff = (String)cbWerkstoff.getSelectedItem();
@@ -295,15 +307,15 @@ public class GUI{
 
 
 
-				JComboBox cbWerkstoff1 = new JComboBox();
-				DefaultComboBoxModel cbWerkstoff1Model = new DefaultComboBoxModel(ergebnisarr[0]);
-				liVorschlag1.setModel(cbWerkstoff1Model);
-				JComboBox cbWerkstoff2 = new JComboBox();
-				DefaultComboBoxModel cbWerkstoff2Model = new DefaultComboBoxModel(ergebnisarr[1]);
-				liVorschlag2.setModel(cbWerkstoff2Model);
-				JComboBox cbWerkstoff3 = new JComboBox();
-				DefaultComboBoxModel cbWerkstoff3Model = new DefaultComboBoxModel(ergebnisarr[2]);
-				liVorschlag3.setModel(cbWerkstoff3Model);
+				JComboBox vorschlag1 = new JComboBox();
+				DefaultComboBoxModel vorschlag1Model = new DefaultComboBoxModel(ergebnisarr[0]);
+				liVorschlag1.setModel(vorschlag1Model);
+				JComboBox vorschlag2 = new JComboBox();
+				DefaultComboBoxModel vorschlag2Model = new DefaultComboBoxModel(ergebnisarr[1]);
+				liVorschlag2.setModel(vorschlag2Model);
+				JComboBox vorschlag3 = new JComboBox();
+				DefaultComboBoxModel vorschlag3Model = new DefaultComboBoxModel(ergebnisarr[2]);
+				liVorschlag3.setModel(vorschlag3Model);
 			}
 		});
 	}

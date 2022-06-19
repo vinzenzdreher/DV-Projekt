@@ -48,10 +48,10 @@ public class datenbank{
 
 
 		try {
-			System.out.println(abfrage);
+//			System.out.println(abfrage);
 
 			Connection con = DriverManager.getConnection(databaseURL);		//Verbindung
-			System.out.println("Connected to  MS Access database");			
+//			System.out.println("Connected to  MS Access database");			
 
 			Statement stm = con.createStatement();  //Statement bilden
 			ResultSet rs = stm.executeQuery(abfrage);	//anlegen von Result set Art neue Tabelle mit den zutreffenden Inhalten
