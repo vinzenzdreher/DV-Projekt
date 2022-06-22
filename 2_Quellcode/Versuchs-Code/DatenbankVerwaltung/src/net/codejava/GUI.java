@@ -24,6 +24,11 @@ import javax.swing.SpinnerListModel;
 import javax.swing.SwingConstants;
 
 public class GUI{
+	//Erstellung der Variablen:
+	String [] werkstoff;
+	String [] bearbeitung;
+	String [] oberflaeche;
+	String [] radius;
 	String[] variableID;
 	String[] variableHer;
 	String[] variableModel;
@@ -43,8 +48,6 @@ public class GUI{
 	String vc;
 	String ap;
 	String f;
-	String test1;
-	StringBuffer test2;
 	String ergebnisarr[][];
 	String kE2;
 	String kT;
@@ -52,13 +55,13 @@ public class GUI{
 
 
 
-
+//Konstruktor:
 	public GUI () {
-
-		String [] werkstoff = {"Stahl","Harte Werkstoffe", "Aluminium","Nichtrostender Stahl","Titan","Gusseisen"};
-		String [] bearbeitung = {"Schruppen","Schlichten"};
-		String [] oberflaeche = {"1", "1.6", "2.5", "4", "6.3", "10", "16", "25", "40", "63"};
-		String [] radius ={"0.2","0.4", "0.8","1.2"};
+//Initialisierung der Variablen:
+		werkstoff = new String []{"Stahl","Harte Werkstoffe", "Aluminium","Nichtrostender Stahl","Titan","Gusseisen"};
+		bearbeitung = new String []{"Schruppen","Schlichten"};
+		oberflaeche = new String []{"1", "1.6", "2.5", "4", "6.3", "10", "16", "25", "40", "63"};
+		radius = new String []{"0.2","0.4", "0.8","1.2"};
 		kE2= "Keine Eingabe";
 		kT = "Kein Treffer";
 		variableID = new String[]{kE2,kE2,kE2};
@@ -95,40 +98,37 @@ public class GUI{
 		ergebnisarr[0] = ergebnis;
 		ergebnisarr[1]= ergebnis;
 		ergebnisarr[2]= ergebnis;
-
+//Bild für ImageIcon importieren:
 		ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("Schneidplatte.jpg"));
-		
+//Fenster erstellen:		
 		JFrame frame = new JFrame("Werkzeugauswahl");
 
 		int frame_x = 1000; //Breite des Programmfensters in Pixel
 		int frame_y = 800; //Hoehe des Programmfensters in Pixel
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); //Bildschirmdimensionen in Pixeln holen
-		frame.setBounds((screenSize.width-frame_x)/2, (screenSize.height-frame_y)/2, frame_x, frame_y);
+		frame.setBounds((screenSize.width-frame_x)/2, (screenSize.height-frame_y)/2, frame_x, frame_y);//Fenster in die Mitte des Bildschirms setzen
 		frame.setVisible(true);
 		frame.setSize(1000,700);
 		frame.setLayout(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Programm wird bei schliessen des Fensters auch geschlossen
 		frame.setTitle("CuttingPlateFinder");
 		frame.setVisible(true);
 		frame.setResizable(false);
-		frame.setBackground(new Color(0xC0C0C0));
-		frame.setIconImage(logo.getImage());
-		/*Image icon = Toolkit.getDefaultToolkit().getImage("");
-															frame.setIconImage(icon);*/
+		frame.setBackground(new Color(0xC0C0C0));//Hintergrundfarbe
+		frame.setIconImage(logo.getImage());//ImageIcon gewechselt
 		Container cp = frame.getContentPane();
 		cp.setLayout(null);
 
 		/*********************************************************/
-
+//Suchen-Button erstellen:
 		JButton bSuchen = new JButton("Suche starten!");
 		bSuchen.setBounds(350, 260, 300, 70);
-		//bSuchen.setMargin(new Insets(2, 2, 2, 2));
 		bSuchen.setFont(new Font("@HP Simplified Hans",Font.BOLD, 16));
 		bSuchen.setBackground(new Color(0xFFC800));
 		cp.add(bSuchen);
 
 		/*********************************************************/
-
+//Textfelder erstellen:
 		JLabel lbWerkstoff = new JLabel("Werkstoff");
 		lbWerkstoff.setBounds(40, 100, 200, 25);
 		lbWerkstoff.setHorizontalAlignment(SwingConstants.CENTER);
@@ -172,7 +172,7 @@ public class GUI{
 		cp.add(lbVorschlag3);
 
 		/*********************************************************/
-
+//Spinner erstellen:
 		JSpinner spOberflaeche = new JSpinner();
 		SpinnerListModel spOberflaecheModel = new SpinnerListModel (oberflaeche);
 		spOberflaeche.setModel(spOberflaecheModel);
@@ -196,7 +196,7 @@ public class GUI{
 		spRadius.setVisible(true);
 
 		/*********************************************************/
-
+//Dropdown-Menue/ComboBox erstellen:
 		JComboBox cbWerkstoff = new JComboBox();
 		DefaultComboBoxModel cbWerkstoffModel = new DefaultComboBoxModel(werkstoff);
 		cbWerkstoff.setModel(cbWerkstoffModel);
@@ -217,13 +217,13 @@ public class GUI{
 		cbBearbeitung.setVisible(true);
 
 		/*********************************************************/
-
+//Listen initialisieren:
 		JList liVorschlag1 = new JList(ergebnisarr[0]);
 		JList liVorschlag2 = new JList(ergebnisarr[1]);	
 		JList liVorschlag3 = new JList(ergebnisarr[2]);
 
 		/*********************************************************/
-
+//Listen in Fenster anzeigen:
 		JScrollPane liVorschlag1ScrollPane = new JScrollPane(liVorschlag1);
 		liVorschlag1ScrollPane.setBounds(55, 450, 280, 170);
 		liVorschlag1ScrollPane.setBackground(new Color(0xFFFFFF));
@@ -239,25 +239,21 @@ public class GUI{
 		liVorschlag3ScrollPane.setBackground(new Color(0xFFFFFF));
 		cp.add(liVorschlag3ScrollPane);
 		frame.repaint();
-
-
-		/*********************************************************/
-
-		//ImageIcon logo = new ImageIcon(".//res//Schneidplatte.jpg");
-//		ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("Schneidplatte.jpg"));
 		
 		/*********************************************************/
+//ActionListener für Suchen-Button erstellen:
 		bSuchen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String eingabeWerkstoff = (String)cbWerkstoff.getSelectedItem();
-				String eingabeBearbeitung = (String)cbBearbeitung.getSelectedItem();
-				String eingabeRadius = (String)spRadius.getValue();
-				double eingabeOberflaeche = Double.parseDouble((String)spOberflaeche.getValue())/1000;
-				double vorschub = Math.round(Math.sqrt(8*eingabeOberflaeche*Double.parseDouble(eingabeRadius))*1000.0)/1000.0;
+				String eingabeWerkstoff = (String)cbWerkstoff.getSelectedItem();//ausgewaehlter Werkstoff in String laden
+				String eingabeBearbeitung = (String)cbBearbeitung.getSelectedItem();//ausgewaehlte Bearbeitung in String laden
+				String eingabeRadius = (String)spRadius.getValue();//ausgwaehlten Radius in String laden
+				double eingabeOberflaeche = Double.parseDouble((String)spOberflaeche.getValue())/1000;//ausgewaehlte Oberflaeche in double laden
+				double vorschub = Math.round(Math.sqrt(8*eingabeOberflaeche*Double.parseDouble(eingabeRadius))*1000.0)/1000.0;//Vorschub zum erreichen der gewaehlten Oberflaeche berechnen
 
-				datenbank data = new datenbank(eingabeWerkstoff, eingabeBearbeitung, eingabeRadius);
-				data.getSchneidplatte();
-
+				datenbank data = new datenbank(eingabeWerkstoff, eingabeBearbeitung, eingabeRadius);//erstellen eines Objekts der Klasse datenbank
+				data.getSchneidplatte();//aufrufen der Methode getSchneidplatte um zu filtern
+				
+//Variablen mit Daten aus der Datenbank ueberschreiben:
 				for(int i = 0; i<3;i++) {
 					variableID[i] = data.iD[i];
 					variableHer[i] = data.her[i];
@@ -270,9 +266,12 @@ public class GUI{
 					variableAp[i] = data.ap[i];
 					try {
 						if (Double.parseDouble(variableF[i])>vorschub) {
-							variableF[i]= String.valueOf(vorschub);
+							variableF[i]= String.valueOf(vorschub);//Vergleich des gegebenen und des errechneten Vorschubs
 						}
 					} catch(NumberFormatException e1) {
+						/*Wenn keine 3 Ergebnisse gefunden werden, wird versucht 
+						"Keine Eingabe" in eine Double zu veraendern, daraufhin greift 
+						die NumberFormatException und alle Variablen werden mit "Kein Treffer" ueberschrieben*/
 						variableID[i] = kT;
 						variableHer[i] = kT;
 						variableModel[i] = kT;
@@ -287,7 +286,7 @@ public class GUI{
 				
 					
 					
-					
+//Ergebnis-Arrays fuer die Listen werden gefuellt:
 					ergebnisarr[i]= new String[] {id+variableID[i],
 							hersteller+variableHer[i],
 							model+variableModel[i],
@@ -305,7 +304,7 @@ public class GUI{
 
 
 
-
+//Ergebnis-Arrays werden zum Typ ListModel geaendert und dann wird das Fenster mit setModel neu geladen.
 
 				JComboBox vorschlag1 = new JComboBox();
 				DefaultComboBoxModel vorschlag1Model = new DefaultComboBoxModel(ergebnisarr[0]);
