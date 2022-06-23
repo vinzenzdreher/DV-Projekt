@@ -8,7 +8,7 @@
         <body>
             <header>
                 <img src="images/HFU-Logo.png">
-                <h1>Projekt: Kleiner Werkstatthelfer für das Drehen</h1>
+                <h1>Projekt: Cutting-Insert-Finder</h1>
                 <h2>Semester: SS 2022</h2>
                 <b>Teammitglieder:</b>
                 <ul>
@@ -21,24 +21,25 @@
             </header>
             <main>
                 <h2>1. Projekt-Beschreibung</h2>
-                <p> Der kleine Werkstatthelfer soll aus einer SQL Datenbank die zu verwendende Schneidplatte aussuchen und die optimalen Schnittdaten errechnen.
-		Über eine grafische Oberfläche soll die gewünschte Bearbeitungsstrategie, zu bearbeitender Werkstoff und Maschine gewählt werden. 
+                <p> Der Cutting-Insert-Finder soll eine SQL-Datenbank nach eingegebenen Werten filtern. Im Anschluss sollen passende Schneidplatten mit den Schnittwerten ausgegeben werden. Über die grafische Oberfläche können die Parameter gewählt werden und werden die Vorschläge angezeigt.  
 		</p>
                 <h2>2. Features und Anforderungen</h2>
                 <p>TODO: Stellen Sie die aus Ihrer Sicht wichtigsten funktionalen Anforderungen (maximal 10) zusammen:</p>
                 <ul>
-                    <li>Schnittdaten und Schneidplatte für das Drehen ermitteln anhand unterschiedlicher Eingabeparameter</li>
-                    <li>Ermittlung der Drehzahl, Vorschub, Schnittgeschwindigkeit, Zustellung </li>
-                    <li>Zu verwendende Schneidplatte, Werkstoff, Bearbeitungsstrategie, Werkstattbedingungen</li>
-                    <li>Aus Datenbank die passenden Werte ermitteln und daraus die Ausgabewerte errechnen </li>
-                    <li>Schnittgeschwindigkeiten, Zustellung und Vorschub der jeweiligen Schneidplatte </li>
-		    <li>Der Nutzer wird so durch die Anwendung geführt, dass keine Missverständnisse auftreten können. </li>
+                    <li>Ermittlung von passenden Schneidplatten für das Drehen anhand 				unterschiedlicher Eingabeparameter</li>
+                    <li> Ausgabe der Schneidplatten mit Vorschübe, Schnittgeschwindigkeiten und Zustellungen</li>
+                    <li> Vergleich des theoretisch erechnenten Vorschubs über die Oberflächenanforderung mit dem angegebenen Mindestvorschub.</li>
+                    <li> Ausgabe von herstellerspezifischen Daten um Nachbestellungen zu erleichtern.</li>
+                    
+                   
                 </ul>
+                
                 <p>TODO: Darüber hinaus sollen nicht-funktionale Anforderungen spezifiziert werden:</p>
                 <ul>
                     <li>Die Bedienoberfläche soll schlicht, schnell und einfach verständlich sein, sowie nicht zu viele Informationen enthalten.</li>
+                     <li>Der Nutzer kann nur aus vorgebenen Eingabewerten auswählen, um Anwendungsfehler auszuschließen. </li>
                     <li>Das Programm soll auf einem Windows Rechner ohne Internet Zugang lauffähig sein.</li>
-                    <li>Es werden folgende Entwicklungswerkzeuge verwendet: Eclipse, Microsoft Access, MySQL, Github</li>
+                    <li>Es werden folgende Entwicklungswerkzeuge verwendet: Eclipse, Microsoft Access, Github</li>
                 </ul>
                 <h2>3. Architektur</h2>
                 <p>TODO: Beschreibung der Software-Architektur inkl. Klassendiagramm z. B.:</p>
@@ -46,45 +47,61 @@
                 
 		<div class="diagram">
                     classDiagram
-                    class Benutzeroberflaeche {
-                       	-String material
-			-double oberflaechenangabe
-			-String bearbeitung
-			getRadius()
-			getMaterial()
-			getOberflächenangabe()
-			getBearbeitung()
+                    class GUI {
+    GUI()
+    String [] werkstoff;
+	String [] bearbeitung;
+	String [] oberflaeche;
+	String [] radius;
+	String[] variableID;
+	String[] variableHer;
+	String[] variableModel;
+	String[] variableMat;
+	String[] variableBear;
+	String[] variableRad;
+	String[] variableVc;
+	String[] variableF;
+	String[] variableAp;
+	String[] ergebnis;
+	String ergebnisarr[][];
+	
 
 			}
-                    class WerkzeugDatenbank {
-                        sqlSchnittstelle()
-                                               
+     class Datenbank {
+    datenbank(String material1, String beaumfang1, String radius1)               
+    getSchneidplatte()
+    String databaseURL;
+	String material;
+	String beaumfang;
+	String abfrage;
+	String radius;
+	String[] iD;
+	String[] her;
+	String[] model;
+	String[] mat; 
+	String[] bear;
+	String[] rad ;
+	String[] vc ;
+	String[] f;
+	String[] ap ;
+	String kE;                        
                     }
-                    class Verarbeitung {
-                   	-String material
-			-double oberflaechenangabe
-			-String bearbeitung
-			-double schnittgeschwindigkeit
-			-double vorschub
-			-double zustellung
-			getVc()
-			getVorschub()
-			getZustellung()
-			getWerkzeug()
+               class main {
+            
 			}
                    
                   
 			 
-			Verarbeitung --> Benutzeroberflaeche : greift zu
-			Verarbeitung --> WerkzeugDatenbank : greift zu
+			GUI --> Datenbank : greift zu
+			main --> GUI : greift zu
 			
                   
                
 		 </div>
                 <h2>4. Aufwandsschätzung und Aufteilung</h2>
                 <p>  <li> Erstellung der grafischen Oberfläche (Aufwand: 4h pro Woche; Michel Schänzle, Robin Hofmann)</li>
-		   <li> Werkzeuge-Datenbank zusammenstellen und Auswahlkriterien filter (Aufwand: 4h pro Woche; Michel Schänzle, Vinzenz Dreher, Robin Hofmann)</li>
-		    <li> Programmierung der Verarbeitungsklasse (Aufwand: 4h pro Woche; Ingo Steinert, Leon Nopper)</li> </p>
+		   <li> Werkzeuge-Datenbank zusammenstellen  (Aufwand: 1h pro Woche; Leon Nopper)</li>
+		    <li> Programmierung Datenbankklasse (Aufwand: 4h pro Woche; Ingo Steinert, Leon Nopper, Vinzenz Dreher)</li> </p>
                 <h2>Optional: Verweis auf andere HTML Dateien</h2>
                 <p><a href="otherfile.html">Eine weitere HTML-Datei</a></p>
             </main>
