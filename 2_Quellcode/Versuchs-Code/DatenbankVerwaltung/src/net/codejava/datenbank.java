@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 
-
+/** Datenbank Klasse mit allen Parametern definieren*/
 public class datenbank{
 	private String databaseURL;
 	private String material;
@@ -42,8 +42,9 @@ public class datenbank{
 		//fuer TEST
 
 	}
+/**Methode die die passende Schneidplatte herraussucht und sich mit der Datenbank verbindet */
 	public void getSchneidplatte() {
-
+//**Filtern nach den geforderten Parametern */
 		abfrage = "SELECT * FROM [Schneidplatten Datenbank] WHERE Material = '"+material+ "' AND Bearbeitungsumfang = '"+beaumfang+"'AND Radius = '"+radius+"'";
 
 
@@ -58,7 +59,7 @@ public class datenbank{
 			ResultSetMetaData rsmd = rs.getMetaData();		
 			int cols = rsmd.getColumnCount();		//bestimmen der groesse der Tabelle 
 
-
+/**Schleife für das Speichern der herausgefilterten Parameter in Arrays */
 			for(int i = 0; i<3; i++) {
 				while(rs.next()) {
 
