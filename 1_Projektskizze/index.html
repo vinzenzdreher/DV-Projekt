@@ -47,7 +47,7 @@
                 
 		<div class="diagram">
                     classDiagram
-                    class GUI {
+    class GUI {
     GUI()
     String [] werkstoff;
 	String [] bearbeitung;
@@ -67,33 +67,42 @@
 	
 
 			}
-     class Datenbank {
+     class DatenbankZugriff {
     datenbank(String material1, String beaumfang1, String radius1)               
-    getSchneidplatte()
-    String databaseURL;
-	String material;
-	String beaumfang;
-	String abfrage;
-	String radius;
-	String[] iD;
-	String[] her;
-	String[] model;
-	String[] mat; 
-	String[] bear;
-	String[] rad ;
-	String[] vc ;
-	String[] f;
-	String[] ap ;
-	String kE;                        
+    +void getSchneidplatte()
+    -String databaseURL;
+	-String material;
+	-String beaumfang;
+	-String abfrage;
+	-String radius;
+	#String[] iD;
+	#String[] her;
+	#String[] model;
+	#String[] mat; 
+	#String[] bear;
+	#String[] rad ;
+	#String[] vc ;
+	#String[] f;
+	#String[] ap ;
+	+String kE;                        
                     }
+      class DatenbankAnbindung{
+    +Connection ConnectionDB()
+    +Connection con;
+	-String databaseurl;
+	-String dbpfad;
+	-String dbverz; 
+	-String dbname;
+      }
                class main {
-            
+             +static void main()
 			}
                    
                   
 			 
-			GUI --> Datenbank : greift zu
+			GUI --> DatenbankZugriff : greift zu
 			main --> GUI : greift zu
+            main --> DatenbankAnbindung: greif zu
 			
                   
                
