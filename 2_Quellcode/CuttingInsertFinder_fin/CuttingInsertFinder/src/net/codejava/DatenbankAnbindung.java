@@ -12,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.*;
 
+/**DatenbankAnbindungs-Klasse mit allen Parametern definieren*/
+
  class DatenbankAnbindung {
 	public  Connection con;
 	private  String databaseurl;
@@ -20,7 +22,8 @@ import java.sql.*;
 	private  String dbname;
 	
 	
-
+/**Methode um die Datenbank(Database1) aus dem Quellordner in ein Verzeichniss zu kopieren, um anschlieﬂend
+ * die Verbindung zu dieser Datenbank aufzubauen */
     public Connection ConnectDB(){
        
         	dbverz = "c:/DatenbankCuttingInsertFinder";

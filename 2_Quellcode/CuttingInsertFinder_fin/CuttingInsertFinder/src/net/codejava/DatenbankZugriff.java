@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
 	protected String[] f;
 	protected String[] ap ;
 	public String kE;
-	//Connection con = null;
+	
 	
 
 	DatenbankZugriff(String material1, String beaumfang1, String radius1){
@@ -55,7 +55,7 @@ import javax.swing.JOptionPane;
 	
 
 	
-/**Methode die die passende Schneidplatte herraussucht und sich mit der Datenbank verbindet */
+/**Sucht die passende Schneidplatte, über die ihr übergebenen Parameter, heraus. Führt die Methode ConnectDB() der DatenbankAnbindungs-Klasse aus.*/
 	public void getSchneidplatte() {
 //**Filtern nach den geforderten Parametern */
 		abfrage = "SELECT * FROM [Schneidplatten Datenbank] WHERE Material = '"+material+ "' AND Bearbeitungsumfang = '"+beaumfang+"'AND Radius = '"+radius+"'";
