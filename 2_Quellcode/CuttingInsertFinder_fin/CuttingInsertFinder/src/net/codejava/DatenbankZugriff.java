@@ -8,7 +8,14 @@ import java.sql.*;
 
 import javax.swing.JOptionPane;
 
-/** Datenbank Klasse mit allen Parametern definieren*/
+/** Die Klasse DatenbankZugriff filtert die Datenbank nach uebergebenen Parametern
+ * @author Leon Nopper
+ * @author Vinzenz Dreher
+ * @author Ingo Steinert
+ * @author Robin Hofmann
+ * @author Michel Schaenzle
+ * @version 1.0
+ * @since 20.06.2022*/
  public class DatenbankZugriff{
 	private String databaseURL;
 	private String material;
@@ -27,7 +34,10 @@ import javax.swing.JOptionPane;
 	public String kE;
 	
 	
-
+/**Im Konstruktor werden die Uebergabeparameter aus der Benutzeroberflaeche GUI uebergeben und die Arrays mit "Keine Eingabe" initialisiert
+ * @param material1 ausgewaehltes Material
+ * @param beaumfang1 ausgewaehlter Bearbeitungsumfang
+ * @param radius1 ausgewaehlter Radius*/
 	DatenbankZugriff(String material1, String beaumfang1, String radius1){
 		kE = new String ("Keine Eingabe");  
 		iD = new String[] {kE,kE,kE};
@@ -55,30 +65,24 @@ import javax.swing.JOptionPane;
 	
 
 	
-/**Sucht die passende Schneidplatte, über die ihr übergebenen Parameter, heraus. Führt die Methode ConnectDB() der DatenbankAnbindungs-Klasse aus.*/
+/**Die Methode getSchneidplatte() erstellt ein Objekt der Klasse DatenbankAnbindung und fuehrt 
+ * die Methode ConnectDB() aus um auf die Datenbank zugreifen zu koennen. Weiterhin filtert diese die die Datenbank 
+ * nach den Eingabeparametern und initialisiert passende Ergebnisse.*/
 	public void getSchneidplatte() {
 //**Filtern nach den geforderten Parametern */
 		abfrage = "SELECT * FROM [Schneidplatten Datenbank] WHERE Material = '"+material+ "' AND Bearbeitungsumfang = '"+beaumfang+"'AND Radius = '"+radius+"'";
 
 		try {
 			
-			DatenbankAnbindung database = new DatenbankAnbindung();
+			DatenbankAnbindung database = new DatenbankAnbindung();//Objekt der Klasse DatenbankAnbindung wird erstellt und die Verbindung zur Datenbank hergestellt
 			database.ConnectDB();
 			Connection con1 = database.con;
 			
 			
-			
-            
-
-			//Connection con = DriverManager.getConnection(databaseURL);				//Verbindung
-			//System.out.println("Connected to  MS Access database");			
-			
-			Statement stm = con1.createStatement();  								//Statement bilden
-			ResultSet rs = stm.executeQuery(abfrage);								//anlegen von Result set Art neue Tabelle mit den zutreffenden Inhalten
-			//ResultSetMetaData rsmd = rs.getMetaData();		
-			//int cols = rsmd.getColumnCount();										//bestimmen der groesse der Tabelle 
-
-/**Schleife fuer das Speichern der herausgefilterten Parameter in Arrays */
+			Statement stm = con1.createStatement();  				//Statement bilden
+			ResultSet rs = stm.executeQuery(abfrage);				//anlegen von Result set Art neue Tabelle mit den zutreffenden Inhalten
+		
+//Schleife fuer das Speichern der herausgefilterten Parameter in Arrays 
 			for(int i = 0; i<3; i++) {
 				while(rs.next()) {
 

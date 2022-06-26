@@ -12,7 +12,14 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.*;
 
-/**DatenbankAnbindungs-Klasse mit allen Parametern definieren*/
+/** Die Klasse DatenbankAnbindung stellt die Verbindung zur Acces-Datei her und ueberprueft ob diese im angegeben Pfad existiert
+ * @author Leon Nopper
+ * @author Vinzenz Dreher
+ * @author Ingo Steinert
+ * @author Robin Hofmann
+ * @author Michel Schaenzle
+ * @version 1.0
+ * @since 20.06.2022*/
 
  public class DatenbankAnbindung {
 	public  Connection con;
@@ -22,8 +29,9 @@ import java.sql.*;
 	private  String dbname;
 	
 	
-/**Methode um die Datenbank(Database1) aus dem Quellordner in ein Verzeichniss zu kopieren, um anschlieﬂend
- * die Verbindung zu dieser Datenbank aufzubauen */
+/**Methode um die Datenbank(Database1) aus dem Quellordner in ein Verzeichniss zu kopieren, um anschliessend
+ * die Verbindung zu dieser Datenbank aufzubauen 
+ * @return Connection*/
     public Connection ConnectDB(){
        
         	dbverz = "c:/DatenbankCuttingInsertFinder";

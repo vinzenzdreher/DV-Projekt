@@ -22,7 +22,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 import javax.swing.SwingConstants;
-
+/**Die Klasse GUI stellt die grafische Oberflaeche fuer den CuttingInsertFinder dar.
+ * Sie dient als Bedieneroberflaeche in welcher Eingabeparameter ausgewaehlt werden koennen und die entsprechenden Vorschlaege agegeben werden
+ * @author Leon Nopper
+ * @author Vinzenz Dreher
+ * @author Ingo Steinert
+ * @author Robin Hofmann
+ * @author Michel Schaenzle
+ * @version 1.0
+ * @since 20.06.2022*/
  public class GUI{
 	//Erstellung der Variablen:
 	private String [] werkstoff;
@@ -55,7 +63,7 @@ import javax.swing.SwingConstants;
 
 
 
-//Konstruktor:
+/**Im Konstruktor werden alle Variablen initialisiert und die grafische Oberflaeche erstellt*/
 	public GUI () {
 //Initialisierung der Variablen:
 		werkstoff = new String []{"Stahl","Harte Werkstoffe", "Aluminium","Nichtrostender Stahl","Titan","Gusseisen"};
@@ -102,11 +110,11 @@ import javax.swing.SwingConstants;
 		ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("Schneidplatte.jpg"));
 //Fenster erstellen:		
 		JFrame frame = new JFrame("Werkzeugauswahl");
-
-		int frame_x = 1000; //Breite des Programmfensters in Pixel
-		int frame_y = 800; //Hoehe des Programmfensters in Pixel
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); //Bildschirmdimensionen in Pixeln holen
-		frame.setBounds((screenSize.width-frame_x)/2, (screenSize.height-frame_y)/2, frame_x, frame_y);//Fenster in die Mitte des Bildschirms setzen
+//Fenster in die Mitte des Bildschirms setzen
+		int frame_x = 1000; 
+		int frame_y = 800; 
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
+		frame.setBounds((screenSize.width-frame_x)/2, (screenSize.height-frame_y)/2, frame_x, frame_y);
 		frame.setVisible(true);
 		frame.setSize(1000,700);
 		frame.setLayout(null);
@@ -119,7 +127,7 @@ import javax.swing.SwingConstants;
 		Container cp = frame.getContentPane();
 		cp.setLayout(null);
 
-		/*********************************************************/
+	
 //Suchen-Button erstellen:
 		JButton bSuchen = new JButton("Suche starten!");
 		bSuchen.setBounds(350, 260, 300, 70);
@@ -127,7 +135,7 @@ import javax.swing.SwingConstants;
 		bSuchen.setBackground(new Color(0xFFC800));
 		cp.add(bSuchen);
 
-		/*********************************************************/
+		
 //Textfelder erstellen:
 		JLabel lbWerkstoff = new JLabel("Werkstoff");
 		lbWerkstoff.setBounds(40, 100, 200, 25);
@@ -141,7 +149,7 @@ import javax.swing.SwingConstants;
 		lbRadius.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
 		cp.add(lbRadius);
 
-		JLabel lbOberflaeche = new JLabel("Oberflaechenguete [Rz in µm]");
+		JLabel lbOberflaeche = new JLabel("Oberflaechenguete [Rz in ï¿½m]");
 		lbOberflaeche.setBounds(505, 100, 230, 25);
 		lbOberflaeche.setHorizontalAlignment(SwingConstants.CENTER);
 		lbOberflaeche.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
@@ -171,7 +179,7 @@ import javax.swing.SwingConstants;
 		lbVorschlag3.setFont(new Font("@HP Simplified Hans", Font.BOLD, 16));
 		cp.add(lbVorschlag3);
 
-		/*********************************************************/
+
 //Spinner erstellen:
 		JSpinner spOberflaeche = new JSpinner();
 		SpinnerListModel spOberflaecheModel = new SpinnerListModel (oberflaeche);
@@ -195,7 +203,7 @@ import javax.swing.SwingConstants;
 		cp.add(spRadius);
 		spRadius.setVisible(true);
 
-		/*********************************************************/
+	
 //Dropdown-Menue/ComboBox erstellen:
 		JComboBox cbWerkstoff = new JComboBox();
 		DefaultComboBoxModel cbWerkstoffModel = new DefaultComboBoxModel(werkstoff);
@@ -216,13 +224,13 @@ import javax.swing.SwingConstants;
 		cp.add(cbBearbeitung);
 		cbBearbeitung.setVisible(true);
 
-		/*********************************************************/
+		
 //Listen initialisieren:
 		JList liVorschlag1 = new JList(ergebnisarr[0]);
 		JList liVorschlag2 = new JList(ergebnisarr[1]);	
 		JList liVorschlag3 = new JList(ergebnisarr[2]);
 
-		/*********************************************************/
+	
 //Listen in Fenster anzeigen:
 		JScrollPane liVorschlag1ScrollPane = new JScrollPane(liVorschlag1);
 		liVorschlag1ScrollPane.setBounds(55, 450, 280, 170);
@@ -240,7 +248,7 @@ import javax.swing.SwingConstants;
 		cp.add(liVorschlag3ScrollPane);
 		frame.repaint();
 		
-		/*********************************************************/
+	
 //ActionListener fÃ¼r Suchen-Button erstellen:
 		bSuchen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
