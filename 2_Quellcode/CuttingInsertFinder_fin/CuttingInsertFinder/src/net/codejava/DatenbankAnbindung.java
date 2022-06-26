@@ -14,7 +14,7 @@ import java.sql.*;
 
 /**DatenbankAnbindungs-Klasse mit allen Parametern definieren*/
 
- class DatenbankAnbindung {
+ public class DatenbankAnbindung {
 	public  Connection con;
 	private  String databaseurl;
 	private  String dbpfad;

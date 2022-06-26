@@ -9,7 +9,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 
 /** Datenbank Klasse mit allen Parametern definieren*/
- class DatenbankZugriff{
+ public class DatenbankZugriff{
 	private String databaseURL;
 	private String material;
 	private String beaumfang;

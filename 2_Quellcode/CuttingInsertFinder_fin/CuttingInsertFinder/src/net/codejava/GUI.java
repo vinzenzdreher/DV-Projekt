@@ -23,34 +23,34 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 import javax.swing.SwingConstants;
 
- class GUI{
+ public class GUI{
 	//Erstellung der Variablen:
-	String [] werkstoff;
-	String [] bearbeitung;
-	String [] oberflaeche;
-	String [] radius;
-	String[] variableID;
-	String[] variableHer;
-	String[] variableModel;
-	String[] variableMat;
-	String[] variableBear;
-	String[] variableRad;
-	String[] variableVc;
-	String[] variableF;
-	String[] variableAp;
-	String[] ergebnis;
-	String id;
-	String hersteller;
-	String model;
-	String material;
-	String bear;
-	String rad;
-	String vc;
-	String ap;
-	String f;
-	String ergebnisarr[][];
-	String kE2;
-	String kT;
+	private String [] werkstoff;
+	private String [] bearbeitung;
+	private String [] oberflaeche;
+	private String [] radius;
+	private String[] variableID;
+	private String[] variableHer;
+	private String[] variableModel;
+	private String[] variableMat;
+	private String[] variableBear;
+	private String[] variableRad;
+	private String[] variableVc;
+	private String[] variableF;
+	private String[] variableAp;
+	private String[] ergebnis;
+	private String id;
+	private String hersteller;
+	private String model;
+	private String material;
+	private String bear;
+	private String rad;
+	private String vc;
+	private String ap;
+	private String f;
+	private String ergebnisarr[][];
+	private String kE2;
+	private String kT;
 
 
 
@@ -141,7 +141,7 @@ import javax.swing.SwingConstants;
 		lbRadius.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
 		cp.add(lbRadius);
 
-		JLabel lbOberflaeche = new JLabel("Oberflaechenguete [Rz in mm]");
+		JLabel lbOberflaeche = new JLabel("Oberflaechenguete [Rz in µm]");
 		lbOberflaeche.setBounds(505, 100, 230, 25);
 		lbOberflaeche.setHorizontalAlignment(SwingConstants.CENTER);
 		lbOberflaeche.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
@@ -305,16 +305,19 @@ import javax.swing.SwingConstants;
 
 
 //Ergebnis-Arrays werden zum Typ ListModel geaendert und dann wird das Fenster mit setModel neu geladen.
-
-				JComboBox vorschlag1 = new JComboBox();
-				DefaultComboBoxModel vorschlag1Model = new DefaultComboBoxModel(ergebnisarr[0]);
+				DefaultListModel vorschlag1Model = new DefaultListModel();
 				liVorschlag1.setModel(vorschlag1Model);
-				JComboBox vorschlag2 = new JComboBox();
-				DefaultComboBoxModel vorschlag2Model = new DefaultComboBoxModel(ergebnisarr[1]);
+				for (int i=0; i<9; i++) {
+				vorschlag1Model.addElement(ergebnisarr[0][i]);}
+				DefaultListModel vorschlag2Model = new DefaultListModel();
 				liVorschlag2.setModel(vorschlag2Model);
-				JComboBox vorschlag3 = new JComboBox();
-				DefaultComboBoxModel vorschlag3Model = new DefaultComboBoxModel(ergebnisarr[2]);
+				for (int i=0; i<9; i++) {
+				vorschlag2Model.addElement(ergebnisarr[1][i]);}
+				DefaultListModel vorschlag3Model = new DefaultListModel();
 				liVorschlag3.setModel(vorschlag3Model);
+				for (int i=0; i<9; i++) {
+				vorschlag3Model.addElement(ergebnisarr[2][i]);}
+				
 			}
 		});
 	}
