@@ -49,21 +49,34 @@
                     classDiagram
     class GUI {
     GUI()
-    String [] werkstoff;
-	String [] bearbeitung;
-	String [] oberflaeche;
-	String [] radius;
-	String[] variableID;
-	String[] variableHer;
-	String[] variableModel;
-	String[] variableMat;
-	String[] variableBear;
-	String[] variableRad;
-	String[] variableVc;
-	String[] variableF;
-	String[] variableAp;
-	String[] ergebnis;
-	String ergebnisarr[][];
+    -String [] werkstoff;
+	-String [] bearbeitung;
+	-String [] oberflaeche;
+	-String [] radius;
+	-String[] variableID;
+	-String[] variableHer;
+	-String[] variableModel;
+	-String[] variableMat;
+	-String[] variableBear;
+	-String[] variableRad;
+	-String[] variableVc;
+	-String[] variableF;
+	-String[] variableAp;
+	-String[] ergebnis;
+	-String ergebnisarr[][];
+    -String id;
+	-String hersteller;
+	-String model;
+	-String material;
+	-String bear;
+	-String rad;
+	-String vc;
+	-String ap;
+	-String f;
+	-String ergebnisarr[][];
+	-String kE2;
+	-String kT;
+
 	
 
 			}
@@ -102,7 +115,7 @@
 			 
 			GUI --> DatenbankZugriff : greift zu
 			main --> GUI : greift zu
-            main --> DatenbankAnbindung: greif zu
+            DatenbankZugriff --> DatenbankAnbindung: greift zu
 			
                   
                
