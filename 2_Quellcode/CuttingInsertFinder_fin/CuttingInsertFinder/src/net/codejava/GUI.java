@@ -143,13 +143,13 @@ import javax.swing.SwingConstants;
 		lbWerkstoff.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
 		cp.add(lbWerkstoff);
 
-		JLabel lbRadius = new JLabel("kleinster Radius [mm]");
+		JLabel lbRadius = new JLabel("Radius [mm]");
 		lbRadius.setBounds(280, 100, 200, 25);
 		lbRadius.setHorizontalAlignment(SwingConstants.CENTER);
 		lbRadius.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
 		cp.add(lbRadius);
 
-		JLabel lbOberflaeche = new JLabel("Oberflaechenguete [Rz in �m]");
+		JLabel lbOberflaeche = new JLabel("Oberflaechenguete [Rz in µm]");
 		lbOberflaeche.setBounds(505, 100, 230, 25);
 		lbOberflaeche.setHorizontalAlignment(SwingConstants.CENTER);
 		lbOberflaeche.setFont(new Font("@HP Simplified Hans", Font.BOLD, 14));
